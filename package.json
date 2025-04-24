@@ -1,0 +1,17 @@
+{
+  "name": "@timothyw/pat-common",
+  "description": "",
+  "author": "Timothy Washburn",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  },
+  "license": "ISC"
+}

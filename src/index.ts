@@ -1,3 +1,1 @@
-export type ExampleType = {
-    test: string;
-}
+export * from './types'

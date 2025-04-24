@@ -3,9 +3,10 @@
   "description": "",
   "author": "Timothy Washburn",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsc"
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish"
   },
   "publishConfig": {
     "access": "public"

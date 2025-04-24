@@ -2,7 +2,7 @@
   "name": "@timothyw/pat-common",
   "description": "",
   "author": "Timothy Washburn",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "src/index.ts",
   "scripts": {
     "publish:patch": "npm version patch && npm publish",

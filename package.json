@@ -3,8 +3,11 @@
   "description": "",
   "author": "Timothy Washburn",
   "version": "1.0.3",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish"
   },

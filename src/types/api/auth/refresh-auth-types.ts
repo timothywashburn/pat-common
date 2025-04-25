@@ -2,11 +2,11 @@ import { z } from "zod";
 import { AuthTokens } from "../../auth-tokens";
 import { PublicAuthData } from "../../models";
 
-export const refreshTokenRequestSchema = z.object({
+export const refreshAuthRequestSchema = z.object({
     refreshToken: z.string()
 });
 
-export type RefreshTokenRequest = z.infer<typeof refreshTokenRequestSchema>;
+export type RefreshAuthRequest = z.infer<typeof refreshAuthRequestSchema>;
 
 export interface RefreshAuthResponse {
     tokenData: AuthTokens;

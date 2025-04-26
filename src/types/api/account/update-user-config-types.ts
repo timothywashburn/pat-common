@@ -22,7 +22,7 @@ export const updateUserConfigRequestSchema = z.object({
     }).nullish(),
     iosApp: z.object({
         panels: z.array(z.object({
-            panel: z.enum(PANEL_TYPES),
+            type: z.enum(PANEL_TYPES),
             visible: z.boolean()
         })).optional(),
         itemCategories: z.array(z.string()).optional(),

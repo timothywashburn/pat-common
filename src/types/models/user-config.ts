@@ -22,6 +22,6 @@ export interface UserConfig {
         panels: Panel[];
         itemCategories: string[];
         itemTypes: string[];
-        propertyKeys?: string[];
+        propertyKeys: string[];
     };
 }

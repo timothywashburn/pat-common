@@ -1,18 +1,11 @@
-import { PANEL_TYPES, PanelType } from "../panels";
+import { PANEL_TYPES } from "../panels";
 import { z } from "zod";
-import { AuthId, UserId, userIdSchema } from "../id-types";
+import { userIdSchema } from "../id-types";
 
 const panelSchema = z.object({
     type: z.enum(PANEL_TYPES),
     visible: z.boolean()
 });
-
-export type Panel = z.infer<typeof panelSchema>;
-
-// export interface Panel {
-//     type: PanelType;
-//     visible: boolean;
-// }
 
 export const userConfigSchema = z.object({
     _id: userIdSchema,
@@ -40,24 +33,5 @@ export const userConfigSchema = z.object({
     })
 });
 
+export type Panel = z.infer<typeof panelSchema>;
 export type UserConfig = z.infer<typeof userConfigSchema>;
-
-// export interface UserConfig {
-//     _id: UserId;
-//     createdAt: Date;
-//     updatedAt: Date;
-//
-//     name: string;
-//     timezone: string;
-//     discordID?: string;
-//     itemListTracking?: {
-//         channelId: string;
-//         messageId: string;
-//     };
-//     iosApp: {
-//         panels: Panel[];
-//         itemCategories: string[];
-//         itemTypes: string[];
-//         propertyKeys: string[];
-//     };
-// }

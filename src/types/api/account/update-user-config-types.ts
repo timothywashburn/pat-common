@@ -3,7 +3,7 @@ import { UserConfig, userConfigSchema } from "../../models";
 
 export const updateUserConfigRequestSchema = userConfigSchema
     .omit({ _id: true, createdAt: true, updatedAt: true })
-    .partial()
+    .deepPartial()
     .strict();
 
 export type UpdateUserConfigRequest = z.infer<typeof updateUserConfigRequestSchema>;

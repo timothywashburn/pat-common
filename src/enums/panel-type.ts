@@ -3,5 +3,6 @@ export enum PanelType {
     TASKS = 'tasks',
     INBOX = 'inbox',
     PEOPLE = 'people',
-    SETTINGS = 'settings'
+    SETTINGS = 'settings',
+    DEV = 'dev'
 }

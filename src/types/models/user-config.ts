@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { userIdSchema } from "../id-types";
-import { PanelType } from "../../enums/panel-type";
+import { PanelType } from "../../enums";
 
 const panelSchema = z.object({
     type: z.nativeEnum(PanelType),

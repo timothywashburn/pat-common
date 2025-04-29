@@ -1,4 +1,4 @@
-export interface ProgramConfigData extends Document {
+export interface ProgramConfigData {
     dev: {
         authorizedEmails: string[]
     };

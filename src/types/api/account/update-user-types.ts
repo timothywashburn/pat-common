@@ -8,6 +8,6 @@ export const updateUserRequestSchema = userDataSchema
 
 export type UpdateUserRequest = z.infer<typeof updateUserRequestSchema>;
 
-export interface UpdateUserConfigResponse {
+export interface UpdateUserResponse {
     user: UserData
 }

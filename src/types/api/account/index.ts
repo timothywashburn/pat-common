@@ -1,2 +1,2 @@
-export * from './get-user-config-types';
-export * from './update-user-config-types';
+export * from './get-user-types';
+export * from './update-user-types';

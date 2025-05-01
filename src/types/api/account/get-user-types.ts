@@ -1,5 +1,5 @@
 import { UserData } from "../../models";
 
-export interface GetUserConfigResponse {
+export interface GetUserResponse {
     user: UserData;
 }

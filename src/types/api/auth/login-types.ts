@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { AuthTokens } from "../../auth-tokens";
-import { PublicAuthData, UserConfig } from "../../models";
+import { PublicAuthData, UserData } from "../../models";
 
 export const loginRequestSchema = z.object({
     email: z.string().email(),
@@ -12,5 +12,5 @@ export type LoginRequest = z.infer<typeof loginRequestSchema>;
 export interface LoginResponse {
     tokenData: AuthTokens;
     authData: PublicAuthData;
-    user: UserConfig;
+    user: UserData;
 }

@@ -1,5 +1,5 @@
-import { UserConfig } from "../../models";
+import { UserData } from "../../models";
 
 export interface GetUserConfigResponse {
-    user: UserConfig;
+    user: UserData;
 }

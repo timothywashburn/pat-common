@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { UserConfig, userConfigSchema } from "../../models";
+import { UserData, userDataSchema } from "../../models";
 
-export const updateUserConfigRequestSchema = userConfigSchema
+export const updateUserConfigRequestSchema = userDataSchema
     .omit({ _id: true, createdAt: true, updatedAt: true })
     .deepPartial()
     .strict();
@@ -9,5 +9,5 @@ export const updateUserConfigRequestSchema = userConfigSchema
 export type UpdateUserConfigRequest = z.infer<typeof updateUserConfigRequestSchema>;
 
 export interface UpdateUserConfigResponse {
-    user: UserConfig
+    user: UserData
 }

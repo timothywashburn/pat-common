@@ -7,10 +7,15 @@ const panelSchema = z.object({
     visible: z.boolean()
 });
 
-export const userConfigSchema = z.object({
+export const userDataSchema = z.object({
     _id: userIdSchema,
     createdAt: z.date(),
     updatedAt: z.date(),
+
+    sandbox: z.object({
+        discordId: z.string().optional()
+    }).optional(),
+
     name: z.string().min(1),
     timezone: z.string().refine((tz: string) => {
         try {
@@ -20,18 +25,18 @@ export const userConfigSchema = z.object({
             return false;
         }
     }, { message: "Invalid timezone" }),
-    discordID: z.string().optional(),
-    itemListTracking: z.object({
-        channelId: z.string(),
-        messageId: z.string()
-    }).optional(),
-    iosApp: z.object({
+
+    config: z.object({
         panels: z.array(panelSchema),
-        itemCategories: z.array(z.string()),
-        itemTypes: z.array(z.string()),
-        propertyKeys: z.array(z.string())
+        agenda: z.object({
+            itemCategories: z.array(z.string()),
+            itemTypes: z.array(z.string())
+        }),
+        people: z.object({
+            propertyKeys: z.array(z.string())
+        }),
     })
 });
 
 export type Panel = z.infer<typeof panelSchema>;
-export type UserConfig = z.infer<typeof userConfigSchema>;
+export type UserData = z.infer<typeof userDataSchema>;

@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { userIdSchema } from "../id-types";
-import { PanelType } from "../../enums";
+import { ModuleType } from "../../enums";
 
-const panelSchema = z.object({
-    type: z.nativeEnum(PanelType),
+const moduleSchema = z.object({
+    type: z.nativeEnum(ModuleType),
     visible: z.boolean()
 });
 
@@ -27,7 +27,7 @@ export const userDataSchema = z.object({
     }, { message: "Invalid timezone" }),
 
     config: z.object({
-        panels: z.array(panelSchema),
+        modules: z.array(moduleSchema),
         agenda: z.object({
             itemCategories: z.array(z.string()),
             itemTypes: z.array(z.string())
@@ -38,5 +38,5 @@ export const userDataSchema = z.object({
     })
 });
 
-export type Panel = z.infer<typeof panelSchema>;
+export type Module = z.infer<typeof moduleSchema>;
 export type UserData = z.infer<typeof userDataSchema>;

@@ -1,1 +1,1 @@
-export * from './panel-type';
+export * from './module-type';

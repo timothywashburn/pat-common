@@ -1,4 +1,4 @@
-export enum PanelType {
+export enum ModuleType {
     AGENDA = 'agenda',
     TASKS = 'tasks',
     INBOX = 'inbox',

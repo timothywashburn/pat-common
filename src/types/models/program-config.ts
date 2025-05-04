@@ -12,6 +12,9 @@ export interface ProgramConfigData {
         apiKey: string;
         secretKey: string;
     };
+    expo: {
+        token: string;
+    }
     updatedAt: Date;
     createdAt: Date;
 }

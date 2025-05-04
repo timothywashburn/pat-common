@@ -7,13 +7,18 @@ const moduleSchema = z.object({
     visible: z.boolean()
 });
 
+const deviceSchema = z.object({
+    pushToken: z.string()
+});
+
 export const userDataSchema = z.object({
     _id: userIdSchema,
     createdAt: z.date(),
     updatedAt: z.date(),
 
     sandbox: z.object({
-        discordId: z.string().optional()
+        discordId: z.string().optional(),
+        devices: z.array(deviceSchema)
     }).optional(),
 
     name: z.string().min(1),

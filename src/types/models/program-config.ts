@@ -15,9 +15,7 @@ export interface ProgramConfigData {
     expo: {
         token: string;
     },
-    redis: {
-        url: string;
-    }
+    redisUrl: string;
     updatedAt: Date;
     createdAt: Date;
 }

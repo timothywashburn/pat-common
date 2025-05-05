@@ -19,7 +19,7 @@ export const userDataSchema = z.object({
     sandbox: z.object({
         discordId: z.string().optional(),
         devices: z.array(deviceSchema)
-    }).optional(),
+    }),
 
     name: z.string().min(1),
     timezone: z.string().refine((tz: string) => {

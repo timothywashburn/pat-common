@@ -13,3 +13,7 @@ export interface SocketMessage<T> {
     userId: string;
     data: T;
 }
+
+export interface HeartbeatData {
+    timestamp: number;
+}

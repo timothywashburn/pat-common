@@ -9,7 +9,7 @@ export enum SocketMessageType {
 }
 
 export interface SocketMessage<T> {
-    type: string;
+    type: SocketMessageType;
     userId: string;
     data: T;
 }

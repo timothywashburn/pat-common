@@ -14,6 +14,10 @@ export interface SocketMessage<T> {
     data: T;
 }
 
-export interface HeartbeatData {
+export interface ServerHeartbeatData {
     timestamp: number;
+}
+
+export interface ClientVerifyEmailResponseData {
+    emailVerified: boolean;
 }

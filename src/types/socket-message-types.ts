@@ -1,11 +1,11 @@
 export enum SocketMessageType {
     // client bound packets
     CLIENT_HEARTBEAT_ACK = 'client_heartbeat_ack',
-    CLIENT_CHECK_EMAIL_RESPONSE = 'client_check_email_response',
+    CLIENT_VERIFY_EMAIL_RESPONSE = 'client_verify_email_response',
 
     // server bound packets
     SERVER_HEARTBEAT = 'server_heartbeat',
-    SERVER_CHECK_EMAIL = 'server_check_email',
+    SERVER_VERIFY_EMAIL_CHECK = 'server_verify_email_check',
 }
 
 export interface SocketMessage<T> {

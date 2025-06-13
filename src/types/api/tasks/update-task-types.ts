@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { taskListIdSchema } from '../../id-types';
+import { TaskListId, taskListIdSchema } from '../../id-types';
 
 export const updateTaskRequestSchema = z.object({
     name: z.string().min(1).optional(),
@@ -16,7 +16,7 @@ export interface UpdateTaskResponse {
         name: string;
         notes?: string;
         completed: boolean;
-        taskListId: string;
+        taskListId: TaskListId;
         createdAt: string;
         updatedAt: string;
     };

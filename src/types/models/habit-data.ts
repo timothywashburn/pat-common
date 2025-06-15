@@ -41,8 +41,10 @@ export interface HabitStats {
     completionRate: number;
 }
 
+export type HabitEntry = ToDateString<HabitEntryData>;
+
 export type Habit = ToDateString<HabitData> & {
-    entries: ToDateString<HabitEntryData>[];
+    entries: HabitEntry[];
     stats: HabitStats;
 }
 

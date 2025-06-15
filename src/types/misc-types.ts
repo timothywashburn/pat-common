@@ -6,3 +6,13 @@ export const dateSchema = z.string()
         message: "Invalid date string",
     })
     .transform(val => new Date(val));
+
+export type ToDateString<T> = {
+    [K in keyof T]: T[K] extends Date
+        ? DateString
+        : T[K] extends Array<infer U>
+            ? Array<ToDateString<U>>
+            : T[K] extends object
+                ? ToDateString<T[K]>
+                : T[K];
+};

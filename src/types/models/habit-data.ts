@@ -1,3 +1,5 @@
+import { DateString, ToDateString } from "../misc-types";
+
 export enum HabitFrequency {
     DAILY = 'daily',
     WEEKLY = 'weekly',
@@ -39,7 +41,22 @@ export interface HabitStats {
     completionRate: number;
 }
 
-export interface HabitWithEntries extends HabitData {
-    entries: HabitEntryData[];
+export type Habit = ToDateString<HabitData> & {
+    entries: ToDateString<HabitEntryData>[];
     stats: HabitStats;
+}
+
+export const toHabit = (data: HabitData, entries: HabitEntryData[], stats: HabitStats): Habit => {
+    return {
+        ...data,
+        createdAt: data.createdAt.toISOString() as DateString,
+        updatedAt: data.updatedAt.toISOString() as DateString,
+        entries: entries.map(entry => ({
+            ...entry,
+            date: entry.date.toISOString() as DateString,
+            createdAt: entry.createdAt.toISOString() as DateString,
+            updatedAt: entry.updatedAt.toISOString() as DateString
+        })),
+        stats
+    };
 }

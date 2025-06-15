@@ -1,4 +1,5 @@
-import { DateString, ToDateString } from "../misc-types";
+import { ToDateString } from "../misc-types";
+import { toDateString } from "../../utils";
 
 export enum HabitFrequency {
     DAILY = 'daily',
@@ -51,13 +52,13 @@ export type Habit = ToDateString<HabitData> & {
 export const toHabit = (data: HabitData, entries: HabitEntryData[], stats: HabitStats): Habit => {
     return {
         ...data,
-        createdAt: data.createdAt.toISOString() as DateString,
-        updatedAt: data.updatedAt.toISOString() as DateString,
+        createdAt: toDateString(data.createdAt),
+        updatedAt: toDateString(data.updatedAt),
         entries: entries.map(entry => ({
             ...entry,
-            date: entry.date.toISOString() as DateString,
-            createdAt: entry.createdAt.toISOString() as DateString,
-            updatedAt: entry.updatedAt.toISOString() as DateString
+            date: toDateString(entry.date),
+            createdAt: toDateString(entry.createdAt),
+            updatedAt: toDateString(entry.updatedAt)
         })),
         stats
     };

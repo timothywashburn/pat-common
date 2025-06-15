@@ -1,10 +1,8 @@
-import { TaskId, TaskListId, UserId } from "../id-types";
-
 export interface HabitEntryData {
     _id: string;
     habitId: string;
-    date: string;
-    status: 'completed' | 'excused' | 'missed';
+    date: Date;
+    status: 'completed' | 'excused';
     createdAt: Date;
     updatedAt: Date;
 }

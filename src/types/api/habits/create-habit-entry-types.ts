@@ -8,7 +8,7 @@ export const createHabitEntryRequestSchema = z.object({
 });
 
 export interface CreateHabitEntryRequest {
-    dateString: DateString;
+    date: DateString;
     status: HabitEntryStatus;
 }
 

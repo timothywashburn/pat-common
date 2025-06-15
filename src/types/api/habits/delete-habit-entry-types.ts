@@ -1,5 +1,5 @@
-import { HabitWithEntries } from "../../models/habit-data";
+import { Habit } from "../../models/habit-data";
 
 export interface DeleteHabitEntryResponse {
-    habit: HabitWithEntries;
+    habit: Habit;
 }

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { HabitWithEntries } from "../../models/habit-data";
+import { Habit } from "../../models";
 
 export const updateHabitRequestSchema = z.object({
     name: z.string().min(1, 'Name is required').trim().optional(),
@@ -16,5 +16,5 @@ export interface UpdateHabitRequest {
 }
 
 export interface UpdateHabitResponse {
-    habit: HabitWithEntries;
+    habit: Habit;
 }

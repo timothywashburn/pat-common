@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { dateSchema, DateString } from "../../misc-types";
-import { HabitWithEntries } from "../../models";
+import { Habit } from "../../models";
 
 export const createHabitEntryRequestSchema = z.object({
     date: dateSchema,
@@ -13,5 +13,5 @@ export interface CreateHabitEntryRequest {
 }
 
 export interface CreateHabitEntryResponse {
-    habit: HabitWithEntries;
+    habit: Habit;
 }

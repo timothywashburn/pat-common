@@ -1,15 +1,15 @@
 import { z } from "zod";
-import { Habit } from "../../models";
+import { Habit, HabitEntryStatus } from "../../models";
 import { DateString, dateStringSchema } from "../../misc-types";
 
 export const createHabitEntryRequestSchema = z.object({
     date: dateStringSchema,
-    status: z.enum(['completed', 'excused'])
+    status: z.nativeEnum(HabitEntryStatus)
 });
 
 export interface CreateHabitEntryRequest {
     dateString: DateString;
-    status: 'completed' | 'excused';
+    status: HabitEntryStatus;
 }
 
 export interface CreateHabitEntryResponse {

@@ -1,8 +1,21 @@
+export enum HabitFrequency {
+    DAILY = 'daily',
+    WEEKLY = 'weekly',
+    EVERY_N_DAYS = 'every_n_days',
+    WEEKDAYS_ONLY = 'weekdays_only',
+    CUSTOM = 'custom'
+}
+
+export enum HabitEntryStatus {
+    COMPLETED = 'completed',
+    EXCUSED = 'excused'
+}
+
 export interface HabitEntryData {
     _id: string;
     habitId: string;
     date: Date;
-    status: 'completed' | 'excused';
+    status: HabitEntryStatus;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -12,7 +25,7 @@ export interface HabitData {
     userId: string;
     name: string;
     description?: string;
-    frequency: 'daily';
+    frequency: HabitFrequency;
     rolloverTime: string;
     createdAt: Date;
     updatedAt: Date;
@@ -26,14 +39,7 @@ export interface HabitStats {
     completionRate: number;
 }
 
-export interface HabitWithEntries {
-    id: string;
-    name: string;
-    description?: string;
-    frequency: 'daily';
-    rolloverTime: string;
-    createdAt: Date;
-    updatedAt: Date;
+export interface HabitWithEntries extends HabitData {
     entries: HabitEntryData[];
     stats: HabitStats;
 }

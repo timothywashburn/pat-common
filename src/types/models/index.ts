@@ -1,4 +1,5 @@
 export * from './auth-data';
+export * from './habit-data';
 export * from './item-data';
 export * from './person-data';
 export * from './program-config';

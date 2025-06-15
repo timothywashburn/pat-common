@@ -1,5 +1,6 @@
 export * from './account'
 export * from './auth'
+export * from './habits'
 export * from './items'
 export * from './people'
 export * from './tasks'

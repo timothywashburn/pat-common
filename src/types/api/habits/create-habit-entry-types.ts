@@ -3,7 +3,7 @@ import { Habit } from "../../models";
 import { DateString, dateStringSchema } from "../../misc-types";
 
 export const createHabitEntryRequestSchema = z.object({
-    dateString: dateStringSchema,
+    date: dateStringSchema,
     status: z.enum(['completed', 'excused'])
 });
 

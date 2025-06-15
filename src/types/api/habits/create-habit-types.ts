@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { HabitWithEntries } from "../../models/habit-data";
 
-const createHabitRequestSchema = z.object({
+export const createHabitRequestSchema = z.object({
     name: z.string().min(1, 'Name is required').trim(),
     description: z.string().trim().optional(),
     frequency: z.literal('daily'),

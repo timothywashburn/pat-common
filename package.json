@@ -2,7 +2,7 @@
   "name": "@timothyw/pat-common",
   "description": "",
   "author": "Timothy Washburn",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

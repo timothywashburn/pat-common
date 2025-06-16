@@ -1,7 +1,7 @@
 export enum ModuleType {
     AGENDA = 'agenda',
-    TASKS = 'tasks',
     INBOX = 'inbox',
+    TASKS = 'tasks',
     HABITS = 'habits',
     PEOPLE = 'people',
     SETTINGS = 'settings',

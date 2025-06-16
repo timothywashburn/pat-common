@@ -1,10 +1,12 @@
+import { TaskId, TaskListId } from "../../id-types";
+
 export interface GetTasksResponse {
     tasks: Array<{
-        id: string;
+        id: TaskId;
         name: string;
         notes?: string;
         completed: boolean;
-        taskListId: string;
+        taskListId: TaskListId;
         createdAt: string;
         updatedAt: string;
     }>;

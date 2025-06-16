@@ -1,6 +1,8 @@
+import { TaskListId } from "../../id-types";
+
 export interface GetTaskListsResponse {
     taskLists: Array<{
-        id: string;
+        id: TaskListId;
         name: string;
         createdAt: string;
         updatedAt: string;

@@ -3,7 +3,7 @@ export interface VersionRequest {
 }
 
 export interface VersionResponse {
-    serverVersion: string;
-    minClientVersion: string;
+    serverVersion: number;
+    minClientVersion: number;
     updateRequired: boolean;
 }

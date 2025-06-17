@@ -1,5 +1,5 @@
-export interface VersionRequest {
-    clientVersion: number;
+export interface VersionQuery {
+    clientVersion?: number;
 }
 
 export interface VersionResponse {

@@ -44,9 +44,9 @@ export interface HabitStats {
     completionRate: number;
 }
 
-export type HabitEntry = ToDateString<HabitEntryData>;
+export type HabitEntry = HabitEntryData;
 
-export type Habit = ToDateString<HabitData> & {
+export type Habit = HabitData & {
     entries: HabitEntry[];
     stats: HabitStats;
 }
@@ -54,13 +54,7 @@ export type Habit = ToDateString<HabitData> & {
 export const toHabit = (data: HabitData, entries: HabitEntryData[], stats: HabitStats): Habit => {
     return {
         ...data,
-        createdAt: toDateString(data.createdAt),
-        updatedAt: toDateString(data.updatedAt),
-        entries: entries.map(entry => ({
-            ...entry,
-            createdAt: toDateString(entry.createdAt),
-            updatedAt: toDateString(entry.updatedAt)
-        })),
+        entries,
         stats
     };
 }

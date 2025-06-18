@@ -1,4 +1,4 @@
-import { ToDateString } from "../misc-types";
+import { DateOnlyString, ToDateString } from "../misc-types";
 import { toDateString } from "../../utils";
 
 export enum HabitFrequency {
@@ -17,7 +17,7 @@ export enum HabitEntryStatus {
 export interface HabitEntryData {
     _id: string;
     habitId: string;
-    date: Date;
+    date: DateOnlyString;
     status: HabitEntryStatus;
     createdAt: Date;
     updatedAt: Date;
@@ -28,8 +28,10 @@ export interface HabitData {
     userId: string;
     name: string;
     description?: string;
+    notes?: string;
     frequency: HabitFrequency;
     rolloverTime: string;
+    firstDay: DateOnlyString;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -56,7 +58,6 @@ export const toHabit = (data: HabitData, entries: HabitEntryData[], stats: Habit
         updatedAt: toDateString(data.updatedAt),
         entries: entries.map(entry => ({
             ...entry,
-            date: toDateString(entry.date),
             createdAt: toDateString(entry.createdAt),
             updatedAt: toDateString(entry.updatedAt)
         })),

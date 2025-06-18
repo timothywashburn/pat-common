@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type DateOnlyString = string & { readonly __brand: "DateOnlyString" };
+
 export type DateString = string & { readonly __brand: "DateString" };
 
 export const dateStringSchema = z.string()

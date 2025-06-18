@@ -1,5 +1,6 @@
 import { DateOnlyString, ToDateString } from "../misc-types";
 import { toDateString } from "../../utils";
+import { HabitEntryId, HabitId, UserId } from "../id-types";
 
 export enum HabitFrequency {
     DAILY = 'daily',
@@ -15,7 +16,7 @@ export enum HabitEntryStatus {
 }
 
 export interface HabitEntryData {
-    _id: string;
+    _id: HabitEntryId;
     habitId: string;
     date: DateOnlyString;
     status: HabitEntryStatus;
@@ -24,8 +25,8 @@ export interface HabitEntryData {
 }
 
 export interface HabitData {
-    _id: string;
-    userId: string;
+    _id: HabitId;
+    userId: UserId;
     name: string;
     description?: string;
     notes?: string;

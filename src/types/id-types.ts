@@ -15,8 +15,14 @@ export type PersonId = string & { readonly __brand: "PersonId" };
 export const thoughtIdSchema = z.string().transform((val): ThoughtId => val as ThoughtId);
 export type ThoughtId = string & { readonly __brand: "ThoughtId" };
 
+export const taskListIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
+export type TaskListId = string & { readonly __brand: "TaskListId" };
+
 export const taskIdSchema = z.string().transform((val): TaskId => val as TaskId);
 export type TaskId = string & { readonly __brand: "TaskId" };
 
-export const taskListIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
-export type TaskListId = string & { readonly __brand: "TaskListId" };
+export const habitIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
+export type HabitId = string & { readonly __brand: "HabitId" };
+
+export const habitEntryIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
+export type HabitEntryId = string & { readonly __brand: "HabitEntryId" };

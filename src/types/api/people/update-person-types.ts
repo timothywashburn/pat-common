@@ -8,7 +8,7 @@ export const updatePersonRequestSchema = z.object({
         key: z.string().min(1),
         value: z.string().min(1)
     })).optional(),
-    notes: z.array(personNoteIdSchema).optional()
+    noteIds: z.array(personNoteIdSchema).optional()
 });
 
 export type UpdatePersonRequest = z.infer<typeof updatePersonRequestSchema>;

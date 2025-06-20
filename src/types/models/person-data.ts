@@ -7,6 +7,8 @@ export interface PersonProperty {
 
 export interface PersonNoteData {
     _id: PersonNoteId;
+    personId: PersonId;
+    userId: UserId;
     content: string;
     createdAt: Date;
     updatedAt: Date;

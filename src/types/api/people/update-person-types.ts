@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { personIdSchema, PersonNoteId } from "../../id-types";
+import { personIdSchema, PersonNoteId, personNoteIdSchema } from "../../id-types";
 
 export const updatePersonRequestSchema = z.object({
     name: z.string().min(1).optional(),
@@ -7,7 +7,7 @@ export const updatePersonRequestSchema = z.object({
         key: z.string().min(1),
         value: z.string().min(1)
     })).optional(),
-    notes: z.array(personIdSchema).optional()
+    notes: z.array(personNoteIdSchema).optional()
 });
 
 export type UpdatePersonRequest = z.infer<typeof updatePersonRequestSchema>;

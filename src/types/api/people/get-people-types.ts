@@ -1,6 +1,6 @@
 import { PersonNoteId } from "../../id-types";
-import { PersonData, PersonNoteData } from "../../models";
+import { Person, PersonData, PersonNoteData } from "../../models";
 
 export interface GetPeopleResponse {
-    people: Array<PersonData>;
+    people: Array<Person>;
 }

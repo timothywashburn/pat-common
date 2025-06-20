@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { personIdSchema, PersonNoteId, personNoteIdSchema } from "../../id-types";
-import { PersonNoteData } from "../../models";
+import { Person, PersonNoteData } from "../../models";
 
 export const updatePersonRequestSchema = z.object({
     name: z.string().min(1).optional(),
@@ -14,13 +14,5 @@ export const updatePersonRequestSchema = z.object({
 export type UpdatePersonRequest = z.infer<typeof updatePersonRequestSchema>;
 
 export interface UpdatePersonResponse {
-    person: {
-        id: string;
-        name: string;
-        properties: Array<{
-            key: string;
-            value: string;
-        }>;
-        notes: Array<PersonNoteData>;
-    };
+    person: Person;
 }

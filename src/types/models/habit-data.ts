@@ -1,5 +1,4 @@
-import { DateOnlyString, ToDateString } from "../misc-types";
-import { toDateString } from "../../utils";
+import { DateOnlyString } from "../misc-types";
 import { HabitEntryId, HabitId, UserId } from "../id-types";
 
 export enum HabitFrequency {

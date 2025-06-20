@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { personNoteIdSchema } from "../../id-types";
 
 export const createPersonRequestSchema = z.object({
     name: z.string().min(1),
@@ -6,9 +7,7 @@ export const createPersonRequestSchema = z.object({
         key: z.string().min(1),
         value: z.string().min(1)
     })).optional(),
-    notes: z.array(z.object({
-        content: z.string().min(1)
-    })).optional()
+    notes: z.array(personNoteIdSchema).optional()
 });
 
 export type CreatePersonRequest = z.infer<typeof createPersonRequestSchema>;

@@ -6,6 +6,7 @@ export interface PersonProperty {
 }
 
 export interface PersonNoteData {
+    _id: PersonNoteId;
     content: string;
     createdAt: Date;
     updatedAt: Date;

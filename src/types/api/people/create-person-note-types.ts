@@ -1,8 +1,9 @@
 import { z } from 'zod';
-import { PersonNoteId } from "../../id-types";
+import { PersonNoteId, personNoteIdSchema } from "../../id-types";
 import { PersonNoteData } from "../../models";
 
 export const createPersonNoteRequestSchema = z.object({
+    personId: personNoteIdSchema,
     content: z.string().min(1)
 });
 

@@ -1,4 +1,5 @@
 import { PersonNoteId } from "../../id-types";
+import { PersonNoteData } from "../../models";
 
 export interface GetPeopleResponse {
     people: Array<{
@@ -8,6 +9,6 @@ export interface GetPeopleResponse {
             key: string;
             value: string;
         }>;
-        notes: Array<PersonNoteId>;
+        notes: Array<PersonNoteData>;
     }>;
 }

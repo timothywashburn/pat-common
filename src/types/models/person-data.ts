@@ -18,5 +18,15 @@ export interface PersonData {
     updatedAt: Date;
     name: string;
     properties: PersonProperty[];
+    noteIds: PersonNoteId[];
+}
+
+export interface Person {
+    _id: PersonId;
+    userId: UserId;
+    createdAt: Date;
+    updatedAt: Date;
+    name: string;
+    properties: PersonProperty[];
     notes: PersonNoteId[];
 }

@@ -1,3 +1,5 @@
+import { PersonNoteId } from "../../id-types";
+
 export interface GetPeopleResponse {
     people: Array<{
         id: string;
@@ -6,10 +8,6 @@ export interface GetPeopleResponse {
             key: string;
             value: string;
         }>;
-        notes: Array<{
-            content: string;
-            createdAt: string;
-            updatedAt: string;
-        }>;
+        notes: Array<PersonNoteId>;
     }>;
 }

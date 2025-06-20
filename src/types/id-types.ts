@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PersonNoteData } from "./models";
 
 export const userIdSchema = z.string().transform((val): UserId => val as UserId);
 export type UserId = string & { readonly __brand: "UserId" };
@@ -11,6 +12,9 @@ export type ItemId = string & { readonly __brand: "ItemId" };
 
 export const personIdSchema = z.string().transform((val): PersonId => val as PersonId);
 export type PersonId = string & { readonly __brand: "PersonId" };
+
+export const personNoteIdSchema = z.string().transform((val): PersonNoteId => val as PersonNoteId);
+export type PersonNoteId = string & { readonly __brand: "PersonNoteId" };
 
 export const thoughtIdSchema = z.string().transform((val): ThoughtId => val as ThoughtId);
 export type ThoughtId = string & { readonly __brand: "ThoughtId" };

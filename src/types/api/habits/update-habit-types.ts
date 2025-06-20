@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Habit } from "../../models";
+import { Habit, HabitFrequency } from "../../models";
 
 export const updateHabitRequestSchema = z.object({
     name: z.string().min(1, 'Name is required').trim().optional(),
@@ -13,7 +13,7 @@ export interface UpdateHabitRequest {
     name?: string;
     description?: string;
     notes?: string;
-    frequency?: 'daily';
+    frequency?: HabitFrequency;
     rolloverTime?: string;
 }
 

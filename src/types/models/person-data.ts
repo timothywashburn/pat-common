@@ -1,11 +1,11 @@
-import { PersonId, UserId } from "../id-types";
+import { PersonId, PersonNoteId, UserId } from "../id-types";
 
 export interface PersonProperty {
     key: string;
     value: string;
 }
 
-export interface PersonNote {
+export interface PersonNoteData {
     content: string;
     createdAt: Date;
     updatedAt: Date;
@@ -18,5 +18,5 @@ export interface PersonData {
     updatedAt: Date;
     name: string;
     properties: PersonProperty[];
-    notes: PersonNote[];
+    notes: PersonNoteId[];
 }

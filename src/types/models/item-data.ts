@@ -8,7 +8,7 @@ export interface ItemData {
 
     name: string;
     dueDate?: Date | null;
-    notes?: string;
+    notes?: string | null;
     completed: boolean;
     urgent: boolean;
     category?: string | null;

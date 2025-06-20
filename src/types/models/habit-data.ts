@@ -28,8 +28,8 @@ export interface HabitData {
     _id: HabitId;
     userId: UserId;
     name: string;
-    description?: string;
-    notes?: string;
+    description?: string | null;
+    notes?: string | null;
     frequency: HabitFrequency;
     rolloverTime: string;
     firstDay: DateOnlyString;

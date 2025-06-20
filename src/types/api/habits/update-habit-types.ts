@@ -3,7 +3,8 @@ import { Habit } from "../../models";
 
 export const updateHabitRequestSchema = z.object({
     name: z.string().min(1, 'Name is required').trim().optional(),
-    description: z.string().trim().optional(),
+    description: z.string().trim().nullish(),
+    notes: z.string().trim().nullish(),
     frequency: z.literal('daily').optional(),
     rolloverTime: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, 'rolloverTime must be in HH:MM format').optional()
 });
@@ -11,6 +12,7 @@ export const updateHabitRequestSchema = z.object({
 export interface UpdateHabitRequest {
     name?: string;
     description?: string;
+    notes?: string;
     frequency?: 'daily';
     rolloverTime?: string;
 }

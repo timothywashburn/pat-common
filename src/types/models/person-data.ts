@@ -28,5 +28,5 @@ export interface Person {
     updatedAt: Date;
     name: string;
     properties: PersonProperty[];
-    notes: PersonNoteId[];
+    notes: PersonNoteData[];
 }

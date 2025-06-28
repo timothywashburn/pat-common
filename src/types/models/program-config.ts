@@ -1,4 +1,8 @@
 export interface ProgramConfigData {
+    _requiredBuildVersions: {
+        iOS: number;
+        android: number;
+    }
     dev: {
         authorizedEmails: string[]
     };

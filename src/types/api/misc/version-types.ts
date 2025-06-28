@@ -1,9 +1,10 @@
 export interface VersionQuery {
-    clientVersion?: number;
+    iOSBuildVersion?: number;
+    androidBuildVersion?: number;
 }
 
 export interface VersionResponse {
-    serverVersion: number;
-    minClientVersion: number;
+    minIOSBuildVersion: number;
+    minAndroidBuildVersion: number;
     updateRequired: boolean;
 }

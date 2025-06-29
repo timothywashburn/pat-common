@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ItemData } from "../../models";
+import { ItemData, Serialized } from "../../models";
 
 export const createItemRequestSchema = z.object({
     name: z.string().min(1),
@@ -13,5 +13,5 @@ export const createItemRequestSchema = z.object({
 export type CreateItemRequest = z.infer<typeof createItemRequestSchema>;
 
 export interface CreateItemResponse {
-    item: ItemData;
+    item: Serialized<ItemData>;
 }

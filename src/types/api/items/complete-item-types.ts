@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ItemData } from "../../models";
+import { ItemData, Serialized } from "../../models";
 
 export const completeItemRequestSchema = z.object({
     completed: z.boolean()
@@ -8,5 +8,5 @@ export const completeItemRequestSchema = z.object({
 export type CompleteItemRequest = z.infer<typeof completeItemRequestSchema>;
 
 export interface CompleteItemResponse {
-    item: ItemData;
+    item: Serialized<ItemData>;
 }

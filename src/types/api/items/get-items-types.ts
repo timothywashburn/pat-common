@@ -1,5 +1,5 @@
-import { ItemData } from "../../models";
+import { ItemData, Serialized } from "../../models";
 
 export interface GetItemsResponse {
-    items: ItemData[];
+    items: Serialized<ItemData>[];
 }

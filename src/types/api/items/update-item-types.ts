@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ItemData } from "../../models";
+import { ItemData, Serialized } from "../../models";
 
 export const updateItemRequestSchema = z.object({
     name: z.string().min(1).optional(),
@@ -13,5 +13,5 @@ export const updateItemRequestSchema = z.object({
 export type UpdateItemRequest = z.infer<typeof updateItemRequestSchema>;
 
 export interface UpdateItemResponse {
-    item: ItemData;
+    item: Serialized<ItemData>;
 }

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ItemData } from "../../models";
 
 export const completeItemRequestSchema = z.object({
     completed: z.boolean()
@@ -7,11 +8,5 @@ export const completeItemRequestSchema = z.object({
 export type CompleteItemRequest = z.infer<typeof completeItemRequestSchema>;
 
 export interface CompleteItemResponse {
-    item: {
-        id: string;
-        name: string;
-        completed: boolean;
-        dueDate?: string;
-        notes?: string;
-    };
+    item: ItemData;
 }

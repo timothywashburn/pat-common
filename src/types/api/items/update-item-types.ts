@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ItemData } from "../../models";
 
 export const updateItemRequestSchema = z.object({
     name: z.string().min(1).optional(),
@@ -12,14 +13,5 @@ export const updateItemRequestSchema = z.object({
 export type UpdateItemRequest = z.infer<typeof updateItemRequestSchema>;
 
 export interface UpdateItemResponse {
-    item: {
-        id: string;
-        name: string;
-        dueDate?: string;
-        notes?: string;
-        completed: boolean;
-        urgent: boolean;
-        category?: string;
-        type?: string;
-    };
+    item: ItemData;
 }

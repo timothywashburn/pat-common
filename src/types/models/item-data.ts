@@ -7,10 +7,10 @@ export interface ItemData {
     updatedAt: Date;
 
     name: string;
-    dueDate?: Date | null;
-    notes?: string | null;
+    dueDate?: Date;
+    notes?: string;
     completed: boolean;
     urgent: boolean;
-    category?: string | null;
-    type?: string | null;
+    category?: string;
+    type?: string;
 }

@@ -6,7 +6,7 @@ export interface TaskData {
     createdAt: Date;
     updatedAt: Date;
     name: string;
-    notes?: string | null;
+    notes?: string;
     completed: boolean;
     taskListId: TaskListId;
 }

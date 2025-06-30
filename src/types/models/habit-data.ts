@@ -15,7 +15,7 @@ export enum HabitEntryStatus {
 }
 
 export interface HabitEntryData {
-    _id: HabitEntryId;
+    id: HabitEntryId;
     habitId: HabitId;
     userId: UserId;
     date: DateOnlyString;
@@ -25,7 +25,7 @@ export interface HabitEntryData {
 }
 
 export interface HabitData {
-    _id: HabitId;
+    id: HabitId;
     userId: UserId;
     name: string;
     description?: string | null;

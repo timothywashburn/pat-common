@@ -1,7 +1,7 @@
 import { TaskId, TaskListId, UserId } from "../id-types";
 
 export interface TaskData {
-    _id: TaskId;
+    id: TaskId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;
@@ -12,7 +12,7 @@ export interface TaskData {
 }
 
 export interface TaskListData {
-    _id: TaskListId;
+    id: TaskListId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;

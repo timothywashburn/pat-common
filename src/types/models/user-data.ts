@@ -12,7 +12,7 @@ const deviceSchema = z.object({
 });
 
 export const userDataSchema = z.object({
-    _id: userIdSchema,
+    id: userIdSchema,
     createdAt: z.date(),
     updatedAt: z.date(),
 

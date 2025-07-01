@@ -11,7 +11,8 @@ export enum HabitFrequency {
 
 export enum HabitEntryStatus {
     COMPLETED = 'completed',
-    EXCUSED = 'excused'
+    EXCUSED = 'excused',
+    INCOMPLETE = 'incomplete'
 }
 
 export interface HabitEntryData {

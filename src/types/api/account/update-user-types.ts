@@ -2,7 +2,7 @@ import { z } from "zod";
 import { UserData, userDataSchema } from "../../models";
 
 export const updateUserRequestSchema = userDataSchema
-    // .omit({ _id: true, createdAt: true, updatedAt: true })
+    .omit({ _id: true, createdAt: true, updatedAt: true })
     .deepPartial()
     .strict();
 

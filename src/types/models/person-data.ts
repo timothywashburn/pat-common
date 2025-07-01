@@ -6,7 +6,7 @@ export interface PersonProperty {
 }
 
 export interface PersonNoteData {
-    id: PersonNoteId;
+    _id: PersonNoteId;
     personId: PersonId;
     userId: UserId;
     content: string;
@@ -15,7 +15,7 @@ export interface PersonNoteData {
 }
 
 export interface PersonData {
-    id: PersonId;
+    _id: PersonId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;
@@ -25,7 +25,7 @@ export interface PersonData {
 }
 
 export interface Person {
-    id: PersonId;
+    _id: PersonId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;

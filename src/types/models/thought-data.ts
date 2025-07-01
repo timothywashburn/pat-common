@@ -1,7 +1,7 @@
 import { ThoughtId, UserId } from "../id-types";
 
 export interface ThoughtData {
-    id: ThoughtId;
+    _id: ThoughtId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;

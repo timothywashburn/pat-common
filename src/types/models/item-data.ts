@@ -1,7 +1,7 @@
 import { ItemId, UserId } from "../id-types";
 
 export interface ItemData {
-    id: ItemId;
+    _id: ItemId;
     userId: UserId;
     createdAt: Date;
     updatedAt: Date;

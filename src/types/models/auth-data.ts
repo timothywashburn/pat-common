@@ -1,7 +1,7 @@
 import { AuthId, UserId } from "../id-types";
 
 export interface AuthData {
-    id: AuthId;
+    _id: AuthId;
     createdAt: Date;
     updatedAt: Date;
 

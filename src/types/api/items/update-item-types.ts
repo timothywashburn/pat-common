@@ -3,7 +3,7 @@ import { ItemData, Serialized } from "../../models";
 
 export const updateItemRequestSchema = z.object({
     name: z.string().min(1).optional(),
-    dueDate: z.string().transform(val => new Date(val)).nullish(),
+    dueDate: z.string().nullish(),
     notes: z.string().nullish(),
     urgent: z.boolean().optional(),
     category: z.string().nullish(),

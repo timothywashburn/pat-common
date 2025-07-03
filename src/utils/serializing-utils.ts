@@ -86,12 +86,12 @@ export class Serializer {
         return this.deserialize(data) as unknown as TaskData;
     }
 
-    static serializeTaskListData(data: TaskListData[]): Serialized<TaskListData[]> {
+    static serializeTaskListData(data: TaskListData): Serialized<TaskListData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskListData(data: Serialized<TaskListData[]>): TaskListData[] {
-        return this.deserialize(data) as unknown as TaskListData[];
+    static deserializeTaskListData(data: Serialized<TaskListData>): TaskListData {
+        return this.deserialize(data) as unknown as TaskListData;
     }
 
     static serializeThoughtData(data: ThoughtData): Serialized<ThoughtData> {

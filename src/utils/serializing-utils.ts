@@ -1,7 +1,7 @@
 import {
     HabitData,
     HabitEntryData,
-    ItemData,
+    ItemData, Person,
     PersonData,
     PersonNoteData,
     TaskData,
@@ -52,6 +52,14 @@ export class Serializer {
 
     static deserializeHabitDataEntry(data: Serialized<HabitEntryData>): HabitEntryData {
         return this.deserialize(data) as unknown as HabitEntryData;
+    }
+
+    static serializePerson(data: Person): Serialized<Person> {
+        return this.serialize(data);
+    }
+
+    static deserializePerson(data: Serialized<Person>): Person {
+        return this.deserialize(data) as unknown as Person;
     }
 
     static serializePersonData(data: PersonData): Serialized<PersonData> {

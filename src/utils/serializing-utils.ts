@@ -1,4 +1,13 @@
-import { HabitData, HabitEntryData, ItemData, PersonData, PersonNoteData, TaskData, UserData } from "../types";
+import {
+    HabitData,
+    HabitEntryData,
+    ItemData,
+    PersonData,
+    PersonNoteData,
+    TaskData,
+    ThoughtData,
+    UserData
+} from "../types";
 
 export type Serialized<T> = T extends Date
     ? string
@@ -71,6 +80,14 @@ export class Serializer {
 
     static serializeTaskListData(data: TaskData[]): Serialized<TaskData[]> {
         return this.serialize(data);
+    }
+
+    static serializeThoughtData(data: ThoughtData): Serialized<ThoughtData> {
+        return this.serialize(data);
+    }
+
+    static deserializeThoughtData(data: Serialized<ThoughtData>): ThoughtData {
+        return this.deserialize(data) as unknown as ThoughtData;
     }
 
     static serializeUserData(data: UserData): Serialized<UserData> {

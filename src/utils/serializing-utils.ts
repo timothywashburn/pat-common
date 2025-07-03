@@ -1,5 +1,6 @@
 import {
-    HabitData,
+    Habit,
+    HabitData, HabitEntry,
     HabitEntryData,
     ItemData, Person,
     PersonData,
@@ -48,6 +49,22 @@ export class Serializer {
 
     static serializeHabitDataEntry(data: HabitEntryData): Serialized<HabitEntryData> {
         return this.serialize(data);
+    }
+
+    static serializeHabit(data: Habit): Serialized<Habit> {
+        return this.serialize(data);
+    }
+
+    static deserializeHabit(data: Serialized<Habit>): Habit {
+        return this.deserialize(data) as unknown as Habit;
+    }
+
+    static serializeHabitEntry(data: HabitEntry): Serialized<HabitEntry> {
+        return this.serialize(data);
+    }
+
+    static deserializeHabitEntry(data: Serialized<HabitEntry>): HabitEntry {
+        return this.deserialize(data) as unknown as HabitEntry;
     }
 
     static deserializeHabitDataEntry(data: Serialized<HabitEntryData>): HabitEntryData {

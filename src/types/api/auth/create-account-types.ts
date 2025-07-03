@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UserId } from "../../id-types";
 
 export const createAccountRequestSchema = z.object({
     name: z.string().trim().min(1),
@@ -10,7 +11,7 @@ export const createAccountRequestSchema = z.object({
 export type CreateAccountRequest = z.infer<typeof createAccountRequestSchema>;
 
 export interface CreateAccountResponse {
-    id: string;
+    id: UserId;
     name: string;
     email: string;
 }

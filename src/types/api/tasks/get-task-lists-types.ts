@@ -1,10 +1,6 @@
-import { TaskListId } from "../../id-types";
+import { Serialized } from "../../../utils";
+import { TaskListData } from "../../models";
 
 export interface GetTaskListsResponse {
-    taskLists: Array<{
-        id: TaskListId;
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-    }>;
+    taskLists: Serialized<TaskListData>[];
 }

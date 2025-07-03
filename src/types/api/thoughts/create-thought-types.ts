@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { Serialized } from "../../../utils";
+import { ThoughtData } from "../../models";
 
 export const createThoughtRequestSchema = z.object({
     content: z.string().min(1)
@@ -7,8 +9,5 @@ export const createThoughtRequestSchema = z.object({
 export type CreateThoughtRequest = z.infer<typeof createThoughtRequestSchema>;
 
 export interface CreateThoughtResponse {
-    thought: {
-        id: string;
-        content: string;
-    };
+    thought: Serialized<ThoughtData>;
 }

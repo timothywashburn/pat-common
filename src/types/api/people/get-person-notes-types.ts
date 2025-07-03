@@ -1,6 +1,6 @@
-import { PersonNoteId } from "../../id-types";
-import { Person, PersonData, PersonNoteData } from "../../models";
+import { PersonNoteData } from "../../models";
+import { Serialized } from "../../../utils";
 
 export interface GetPersonNotesResponse {
-    personNotes: Array<PersonNoteData>;
+    personNotes: Serialized<PersonNoteData>[];
 }

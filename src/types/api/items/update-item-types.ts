@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { ItemData, Serialized } from "../../models";
+import { ItemData } from "../../models";
+import { Serialized } from "../../../utils";
 
 export const updateItemRequestSchema = z.object({
     name: z.string().min(1).optional(),

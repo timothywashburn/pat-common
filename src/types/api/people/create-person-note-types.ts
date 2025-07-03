@@ -1,6 +1,7 @@
 import { z } from 'zod';
-import { personIdSchema, PersonNoteId, personNoteIdSchema } from "../../id-types";
+import { personIdSchema } from "../../id-types";
 import { PersonNoteData } from "../../models";
+import { Serialized } from "../../../utils";
 
 export const createPersonNoteRequestSchema = z.object({
     personId: personIdSchema,
@@ -10,5 +11,5 @@ export const createPersonNoteRequestSchema = z.object({
 export type CreatePersonNoteRequest = z.infer<typeof createPersonNoteRequestSchema>;
 
 export interface CreatePersonNoteResponse {
-    personNote: PersonNoteData;
+    personNote: Serialized<PersonNoteData>;
 }

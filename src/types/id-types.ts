@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { PersonNoteData } from "./models";
 
 export const userIdSchema = z.string().transform((val): UserId => val as UserId);
 export type UserId = string & { readonly __brand: "UserId" };

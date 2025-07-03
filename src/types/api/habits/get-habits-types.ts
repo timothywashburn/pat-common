@@ -1,5 +1,6 @@
-import { Habit } from "../../models/habit-data";
+import { Habit } from "../../models";
+import { Serialized } from "../../../utils";
 
 export interface GetHabitsResponse {
-    habits: Habit[];
+    habits: Serialized<Habit>[];
 }

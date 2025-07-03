@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { Habit, HabitEntryStatus } from "../../models";
-import { DateOnlyString, dateOnlyStringSchema } from "../../misc-types";
-import { createHabitRequestSchema } from "./create-habit-types";
+import { dateOnlyStringSchema } from "../../misc-types";
+import { Serialized } from "../../../utils";
 
 export const createHabitEntryRequestSchema = z.object({
     date: dateOnlyStringSchema,
@@ -11,5 +11,5 @@ export const createHabitEntryRequestSchema = z.object({
 export type CreateHabitEntryRequest = z.infer<typeof createHabitEntryRequestSchema>;
 
 export interface CreateHabitEntryResponse {
-    habit: Habit;
+    habit: Serialized<Habit>;
 }

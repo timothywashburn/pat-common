@@ -1,6 +1,6 @@
+import { Serialized } from "../../../utils";
+import { ThoughtData } from "../../models";
+
 export interface GetThoughtsResponse {
-    thoughts: Array<{
-        id: string;
-        content: string;
-    }>;
+    thoughts: Serialized<ThoughtData>[];
 }

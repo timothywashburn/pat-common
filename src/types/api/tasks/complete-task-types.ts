@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { TaskId } from "../../id-types";
+import { Serialized } from "../../../utils";
+import { TaskData } from "../../models";
 
 export const completeTaskRequestSchema = z.object({
     completed: z.boolean()
@@ -8,13 +9,5 @@ export const completeTaskRequestSchema = z.object({
 export type CompleteTaskRequest = z.infer<typeof completeTaskRequestSchema>;
 
 export interface CompleteTaskResponse {
-    task: {
-        id: TaskId;
-        name: string;
-        notes?: string;
-        completed: boolean;
-        taskListId: string;
-        createdAt: string;
-        updatedAt: string;
-    };
+    task: Serialized<TaskData>;
 }

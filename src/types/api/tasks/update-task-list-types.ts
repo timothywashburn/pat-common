@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { TaskListId } from "../../id-types";
+import { Serialized } from "../../../utils";
+import { TaskListData } from "../../models";
 
 export const updateTaskListRequestSchema = z.object({
     name: z.string().min(1).optional()
@@ -8,10 +9,5 @@ export const updateTaskListRequestSchema = z.object({
 export type UpdateTaskListRequest = z.infer<typeof updateTaskListRequestSchema>;
 
 export interface UpdateTaskListResponse {
-    taskList: {
-        id: TaskListId;
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-    };
+    taskList: Serialized<TaskListData>;
 }

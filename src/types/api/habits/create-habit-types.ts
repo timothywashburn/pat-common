@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { Habit, HabitFrequency } from "../../models/habit-data";
-import { createAccountRequestSchema } from "../auth";
+import { Habit, HabitFrequency } from "../../models";
+import { Serialized } from "../../../utils";
 
 export const createHabitRequestSchema = z.object({
     name: z.string().min(1, 'Name is required').trim(),
@@ -13,5 +13,5 @@ export const createHabitRequestSchema = z.object({
 export type CreateHabitRequest = z.infer<typeof createHabitRequestSchema>;
 
 export interface CreateHabitResponse {
-    habit: Habit;
+    habit: Serialized<Habit>;
 }

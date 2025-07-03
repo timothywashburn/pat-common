@@ -1,4 +1,4 @@
-import { ItemData } from "../types";
+import { HabitData, HabitEntryData, ItemData, PersonData, PersonNoteData, TaskData } from "../types";
 
 export type Serialized<T> = T extends Date
     ? string
@@ -21,12 +21,56 @@ export class Serializer {
         return deserializeRecursive(obj) as T;
     }
 
-    static serializeItemData(item: ItemData): Serialized<ItemData> {
-        return this.serialize(item);
+    static serializeItemData(data: ItemData): Serialized<ItemData> {
+        return this.serialize(data);
     }
 
-    static deserializeItemData(apiData: Serialized<ItemData>): ItemData {
-        return this.deserialize(apiData) as unknown as ItemData;
+    static deserializeItemData(data: Serialized<ItemData>): ItemData {
+        return this.deserialize(data) as unknown as ItemData;
+    }
+
+    static serializeHabitData(data: HabitData): Serialized<HabitData> {
+        return this.serialize(data);
+    }
+
+    static deserializeHabitData(data: Serialized<HabitData>): HabitData {
+        return this.deserialize(data) as unknown as HabitData;
+    }
+
+    static serializeHabitDataEntry(data: HabitEntryData): Serialized<HabitEntryData> {
+        return this.serialize(data);
+    }
+
+    static deserializeHabitDataEntry(data: Serialized<HabitEntryData>): HabitEntryData {
+        return this.deserialize(data) as unknown as HabitEntryData;
+    }
+
+    static serializePersonData(data: PersonData): Serialized<PersonData> {
+        return this.serialize(data);
+    }
+
+    static deserializePersonData(data: Serialized<PersonData>): PersonData {
+        return this.deserialize(data) as unknown as PersonData;
+    }
+
+    static serializePersonNoteData(data: PersonNoteData): Serialized<PersonNoteData> {
+        return this.serialize(data);
+    }
+
+    static deserializePersonNoteData(data: Serialized<PersonNoteData>): PersonNoteData {
+        return this.deserialize(data) as unknown as PersonNoteData;
+    }
+
+    static serializeTaskData(data: TaskData): Serialized<TaskData> {
+        return this.serialize(data);
+    }
+
+    static deserializeTaskData(data: Serialized<TaskData>): TaskData {
+        return this.deserialize(data) as unknown as TaskData;
+    }
+
+    static serializeTaskListData(data: TaskData[]): Serialized<TaskData[]> {
+        return this.serialize(data);
     }
 }
 

@@ -2,7 +2,6 @@ export * from './auth-data';
 export * from './habit-data';
 export * from './item-data';
 export * from './notification-template-data';
-export * from './notification-instance-data';
 export * from './notifiable';
 export * from './person-data';
 export * from './program-config';

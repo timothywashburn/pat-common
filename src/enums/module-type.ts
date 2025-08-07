@@ -5,6 +5,5 @@ export enum ModuleType {
     HABITS = 'habits',
     PEOPLE = 'people',
     SETTINGS = 'settings',
-    NOTIFICATIONS = 'notifications',
     DEV = 'dev'
 }

@@ -1,7 +1,14 @@
 import { z } from "zod";
 import { NotificationTemplateId, UserId } from "../id-types";
 
-export const notificationEntityTypeSchema = z.enum(['agenda', 'tasks', 'habits', 'agenda_item', 'task_list', 'task', 'habit']);
+export const notificationEntityTypeSchema = z.enum([
+    // Individual entity types (notifications FOR the entity itself)
+    'agenda', 'tasks', 'habits', 'inbox',
+    'agenda_item', 'task_list', 'task', 'habit',
+    
+    // Parent template types (default templates for children)
+    'agenda_defaults', 'tasks_defaults', 'habits_defaults'
+]);
 export type NotificationEntityType = z.infer<typeof notificationEntityTypeSchema>;
 
 export const notificationTriggerTypeSchema = z.enum(['time_based', 'event_based', 'recurring']);
@@ -48,3 +55,13 @@ export const createNotificationTemplateSchema = notificationTemplateDataSchema.o
 });
 
 export type CreateNotificationTemplateData = z.infer<typeof createNotificationTemplateSchema>;
+
+// Entity sync state for inheritance
+export const entitySyncStateSchema = z.object({
+    userId: z.string().transform((val): UserId => val as UserId),
+    entityType: notificationEntityTypeSchema,
+    entityId: z.string(),
+    synced: z.boolean().default(true), // true = inheriting from parent, false = has custom templates
+    updatedAt: z.date()
+});
+export type EntitySyncState = z.infer<typeof entitySyncStateSchema>;

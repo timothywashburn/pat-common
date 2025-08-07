@@ -5,6 +5,8 @@ import {
     ItemData, Person,
     PersonData,
     PersonNoteData,
+    NotificationTemplateData,
+    NotificationInstanceData,
     TaskData, TaskListData,
     ThoughtData,
     UserData
@@ -125,6 +127,22 @@ export class Serializer {
 
     static deserializeUserData(data: Serialized<UserData>): UserData {
         return this.deserialize(data) as unknown as UserData;
+    }
+
+    static serializeNotificationTemplateData(data: NotificationTemplateData): Serialized<NotificationTemplateData> {
+        return this.serialize(data);
+    }
+
+    static deserializeNotificationTemplateData(data: Serialized<NotificationTemplateData>): NotificationTemplateData {
+        return this.deserialize(data) as unknown as NotificationTemplateData;
+    }
+
+    static serializeNotificationInstanceData(data: NotificationInstanceData): Serialized<NotificationInstanceData> {
+        return this.serialize(data);
+    }
+
+    static deserializeNotificationInstanceData(data: Serialized<NotificationInstanceData>): NotificationInstanceData {
+        return this.deserialize(data) as unknown as NotificationInstanceData;
     }
 }
 

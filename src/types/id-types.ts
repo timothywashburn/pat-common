@@ -29,3 +29,9 @@ export type HabitId = string & { readonly __brand: "HabitId" };
 
 export const habitEntryIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
 export type HabitEntryId = string & { readonly __brand: "HabitEntryId" };
+
+export const notificationTemplateIdSchema = z.string().transform((val): NotificationTemplateId => val as NotificationTemplateId);
+export type NotificationTemplateId = string & { readonly __brand: "NotificationTemplateId" };
+
+export const notificationInstanceIdSchema = z.string().transform((val): NotificationInstanceId => val as NotificationInstanceId);
+export type NotificationInstanceId = string & { readonly __brand: "NotificationInstanceId" };

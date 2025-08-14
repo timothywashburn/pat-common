@@ -6,7 +6,7 @@ import {
     PersonData,
     PersonNoteData,
     NotificationTemplateData,
-    TaskData, TaskListData,
+    ListItemData, ListData,
     ThoughtData,
     UserData
 } from "../types";
@@ -96,20 +96,20 @@ export class Serializer {
         return this.deserialize(data) as unknown as PersonNoteData;
     }
 
-    static serializeTaskData(data: TaskData): Serialized<TaskData> {
+    static serializeTaskData(data: ListItemData): Serialized<ListItemData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskData(data: Serialized<TaskData>): TaskData {
-        return this.deserialize(data) as unknown as TaskData;
+    static deserializeTaskData(data: Serialized<ListItemData>): ListItemData {
+        return this.deserialize(data) as unknown as ListItemData;
     }
 
-    static serializeTaskListData(data: TaskListData): Serialized<TaskListData> {
+    static serializeTaskListData(data: ListData): Serialized<ListData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskListData(data: Serialized<TaskListData>): TaskListData {
-        return this.deserialize(data) as unknown as TaskListData;
+    static deserializeTaskListData(data: Serialized<ListData>): ListData {
+        return this.deserialize(data) as unknown as ListData;
     }
 
     static serializeThoughtData(data: ThoughtData): Serialized<ThoughtData> {

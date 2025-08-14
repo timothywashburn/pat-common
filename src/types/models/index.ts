@@ -5,6 +5,6 @@ export * from './notification-template-data';
 export * from './notifiable';
 export * from './person-data';
 export * from './program-config';
-export * from './task-data';
+export * from './list-data';
 export * from './thought-data';
 export * from './user-data';

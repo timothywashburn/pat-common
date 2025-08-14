@@ -18,16 +18,16 @@ export type PersonNoteId = string & { readonly __brand: "PersonNoteId" };
 export const thoughtIdSchema = z.string().transform((val): ThoughtId => val as ThoughtId);
 export type ThoughtId = string & { readonly __brand: "ThoughtId" };
 
-export const taskListIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
-export type TaskListId = string & { readonly __brand: "TaskListId" };
+export const listIdSchema = z.string().transform((val): ListId => val as ListId);
+export type ListId = string & { readonly __brand: "ListId" };
 
-export const taskIdSchema = z.string().transform((val): TaskId => val as TaskId);
-export type TaskId = string & { readonly __brand: "TaskId" };
+export const listItemIdSchema = z.string().transform((val): ListItemId => val as ListItemId);
+export type ListItemId = string & { readonly __brand: "ListItemId" };
 
-export const habitIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
+export const habitIdSchema = z.string().transform((val): ListId => val as ListId);
 export type HabitId = string & { readonly __brand: "HabitId" };
 
-export const habitEntryIdSchema = z.string().transform((val): TaskListId => val as TaskListId);
+export const habitEntryIdSchema = z.string().transform((val): ListId => val as ListId);
 export type HabitEntryId = string & { readonly __brand: "HabitEntryId" };
 
 export const notificationTemplateIdSchema = z.string().transform((val): NotificationTemplateId => val as NotificationTemplateId);

@@ -4,10 +4,10 @@ import { NotificationTemplateId, UserId } from "../id-types";
 export const notificationEntityTypeSchema = z.enum([
     // Individual entity types (notifications FOR the entity itself)
     'agenda', 'tasks', 'habits', 'inbox',
-    'agenda_item', 'task_list', 'task', 'habit',
+    'agenda_item', 'habit',
     
     // Parent template types (default templates for children)
-    'agenda_defaults', 'tasks_defaults', 'habits_defaults'
+    'agenda_defaults', 'habits_defaults'
 ]);
 export type NotificationEntityType = z.infer<typeof notificationEntityTypeSchema>;
 

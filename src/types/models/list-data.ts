@@ -13,7 +13,7 @@ export interface ListItemData {
     name: string;
     notes?: string;
     completed: boolean;
-    taskListId: ListId;
+    listId: ListId;
 }
 
 export interface ListData {

@@ -5,7 +5,8 @@ import {
     ItemData, Person,
     PersonData,
     PersonNoteData,
-    TaskData, TaskListData,
+    NotificationTemplateData,
+    ListItemData, ListData,
     ThoughtData,
     UserData
 } from "../types";
@@ -95,20 +96,20 @@ export class Serializer {
         return this.deserialize(data) as unknown as PersonNoteData;
     }
 
-    static serializeTaskData(data: TaskData): Serialized<TaskData> {
+    static serializeListItemData(data: ListItemData): Serialized<ListItemData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskData(data: Serialized<TaskData>): TaskData {
-        return this.deserialize(data) as unknown as TaskData;
+    static deserializeListItemData(data: Serialized<ListItemData>): ListItemData {
+        return this.deserialize(data) as unknown as ListItemData;
     }
 
-    static serializeTaskListData(data: TaskListData): Serialized<TaskListData> {
+    static serializeListData(data: ListData): Serialized<ListData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskListData(data: Serialized<TaskListData>): TaskListData {
-        return this.deserialize(data) as unknown as TaskListData;
+    static deserializeListData(data: Serialized<ListData>): ListData {
+        return this.deserialize(data) as unknown as ListData;
     }
 
     static serializeThoughtData(data: ThoughtData): Serialized<ThoughtData> {
@@ -125,6 +126,14 @@ export class Serializer {
 
     static deserializeUserData(data: Serialized<UserData>): UserData {
         return this.deserialize(data) as unknown as UserData;
+    }
+
+    static serializeNotificationTemplateData(data: NotificationTemplateData): Serialized<NotificationTemplateData> {
+        return this.serialize(data);
+    }
+
+    static deserializeNotificationTemplateData(data: Serialized<NotificationTemplateData>): NotificationTemplateData {
+        return this.deserialize(data) as unknown as NotificationTemplateData;
     }
 }
 

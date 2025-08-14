@@ -2,14 +2,14 @@
   "name": "@timothyw/pat-common",
   "description": "",
   "author": "Timothy Washburn",
-  "version": "1.0.104",
+  "version": "1.0.105",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "publish:patch": "npm version patch --no-git-tag-version && npm publish",
-    "publish:minor": "npm version minor --no-git-tag-version && npm publish"
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish"
   },
   "publishConfig": {
     "access": "public"

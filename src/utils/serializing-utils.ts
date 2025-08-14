@@ -96,19 +96,19 @@ export class Serializer {
         return this.deserialize(data) as unknown as PersonNoteData;
     }
 
-    static serializeTaskData(data: ListItemData): Serialized<ListItemData> {
+    static serializeListItemData(data: ListItemData): Serialized<ListItemData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskData(data: Serialized<ListItemData>): ListItemData {
+    static deserializeListItemData(data: Serialized<ListItemData>): ListItemData {
         return this.deserialize(data) as unknown as ListItemData;
     }
 
-    static serializeTaskListData(data: ListData): Serialized<ListData> {
+    static serializeListData(data: ListData): Serialized<ListData> {
         return this.serialize(data);
     }
 
-    static deserializeTaskListData(data: Serialized<ListData>): ListData {
+    static deserializeListData(data: Serialized<ListData>): ListData {
         return this.deserialize(data) as unknown as ListData;
     }
 

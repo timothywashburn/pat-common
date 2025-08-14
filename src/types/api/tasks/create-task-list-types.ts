@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { Serialized } from "../../../utils";
-import { TaskListData } from "../../models";
+import { TaskListData, TaskListType } from "../../models";
 
 export const createTaskListRequestSchema = z.object({
-    name: z.string().min(1)
+    name: z.string().min(1),
+    type: z.nativeEnum(TaskListType)
 });
 
 export type CreateTaskListRequest = z.infer<typeof createTaskListRequestSchema>;

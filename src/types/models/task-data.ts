@@ -1,5 +1,10 @@
 import { TaskId, TaskListId, UserId } from "../id-types";
 
+export enum TaskListType {
+    TASKS = 'tasks',
+    NOTES = 'notes'
+}
+
 export interface TaskData {
     _id: TaskId;
     userId: UserId;
@@ -17,4 +22,5 @@ export interface TaskListData {
     createdAt: Date;
     updatedAt: Date;
     name: string;
+    type: TaskListType;
 }

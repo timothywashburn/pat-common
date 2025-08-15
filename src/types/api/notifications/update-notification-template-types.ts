@@ -1,19 +1,23 @@
 import { z } from "zod";
 import { Serialized } from "../../../utils";
-import { NotificationTemplateData, notificationEntityTypeSchema, notificationTriggerTypeSchema } from "../../models/notification-template-data";
+import {
+    NotificationTemplateData,
+    notificationTriggerTypeSchema,
+    notificationTemplateDataSchema
+} from "../../models";
 
 // Request schema
 export const updateNotificationTemplateRequestSchema = z.object({
-    name: z.string().min(1).max(100).optional(),
-    description: z.string().max(500).optional(),
+    name: z.string().optional(),
+    description: z.string().optional(),
     trigger: z.object({
         type: notificationTriggerTypeSchema,
         conditions: z.record(z.any()),
         timing: z.record(z.any())
     }).optional(),
     content: z.object({
-        title: z.string().min(1).max(200),
-        body: z.string().min(1).max(1000),
+        title: z.string(),
+        body: z.string(),
         variables: z.record(z.string()).optional()
     }).optional(),
     active: z.boolean().optional(),
@@ -22,11 +26,8 @@ export const updateNotificationTemplateRequestSchema = z.object({
 
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
 
-// Response schema
 export const updateNotificationTemplateResponseSchema = z.object({
-    success: z.boolean(),
-    template: z.any().optional(), // Will be Serialized<NotificationTemplateData>
-    error: z.string().optional()
+    template: notificationTemplateDataSchema,
 });
 
 export type UpdateNotificationTemplateResponse = {

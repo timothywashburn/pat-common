@@ -9,15 +9,6 @@ export const syncNotificationTemplateRequestSchema = z.object({
 
 export type SyncNotificationTemplateRequest = z.infer<typeof syncNotificationTemplateRequestSchema>;
 
-// Response schema
-export const syncNotificationTemplateResponseSchema = z.object({
-    success: z.boolean(),
-    template: z.any().optional(), // Will be Serialized<NotificationTemplateData>
-    error: z.string().optional()
-});
-
-export type SyncNotificationTemplateResponse = {
-    success: boolean;
-    template?: Serialized<NotificationTemplateData>;
-    error?: string;
-};
+export interface SyncNotificationTemplateResponse {
+    template: Serialized<NotificationTemplateData>;
+}

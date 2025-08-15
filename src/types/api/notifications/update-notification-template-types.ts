@@ -2,8 +2,7 @@ import { z } from "zod";
 import { Serialized } from "../../../utils";
 import {
     NotificationTemplateData,
-    notificationTriggerTypeSchema,
-    notificationTemplateDataSchema
+    notificationTriggerTypeSchema
 } from "../../models";
 
 // Request schema
@@ -26,12 +25,6 @@ export const updateNotificationTemplateRequestSchema = z.object({
 
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
 
-export const updateNotificationTemplateResponseSchema = z.object({
-    template: notificationTemplateDataSchema,
-});
-
-export type UpdateNotificationTemplateResponse = {
-    success: boolean;
-    template?: Serialized<NotificationTemplateData>;
-    error?: string;
-};
+export interface UpdateNotificationTemplateResponse {
+    template: Serialized<NotificationTemplateData>;
+}

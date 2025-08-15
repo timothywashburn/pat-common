@@ -11,16 +11,11 @@ export const previewNotificationTemplateRequestSchema = z.object({
 
 export type PreviewNotificationTemplateRequest = z.infer<typeof previewNotificationTemplateRequestSchema>;
 
-// Response schema
-export const previewNotificationTemplateResponseSchema = z.object({
-    success: z.boolean(),
-    preview: z.object({
-        title: z.string(),
-        body: z.string(),
-        variables: z.record(z.any())
-    }).optional(),
-    missingVariables: z.array(z.string()).optional(),
-    error: z.string().optional()
-});
-
-export type PreviewNotificationTemplateResponse = z.infer<typeof previewNotificationTemplateResponseSchema>;
+export interface PreviewNotificationTemplateResponse {
+    preview: {
+        title: string;
+        body: string;
+        variables: Record<string, any>;
+    };
+    missingVariables: string[];
+}

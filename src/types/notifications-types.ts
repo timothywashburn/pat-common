@@ -7,7 +7,6 @@ export interface NotificationContext<T = any> {
     entityType: NotificationEntityType;
     entityData: T;
     userId: string;
-    variables: Record<string, any>;
 }
 
 export enum NotificationParentType {
@@ -20,156 +19,61 @@ export enum NotificationEntityType {
     AGENDA_ITEM = 'agenda_item',
 }
 
-export const notificationEntityTypeSchema = z.nativeEnum(NotificationEntityType);
-
-export enum NotificationStatus {
-    SCHEDULED = 'scheduled',
-    SENT = 'sent', 
-    FAILED = 'failed',
-    CANCELLED = 'cancelled'
-}
-
 export enum NotificationTriggerType {
     TIME_BASED = 'time_based',
     EVENT_BASED = 'event_based',
     RECURRING = 'recurring'
 }
 
-export const notificationStatusSchema = z.nativeEnum(NotificationStatus);
 export const notificationTriggerTypeSchema = z.nativeEnum(NotificationTriggerType);
 
 export const notificationTriggerSchema = z.object({
     type: notificationTriggerTypeSchema,
-    conditions: z.record(z.any()),
-    timing: z.record(z.any())
-});
-
-export const notificationContentSchema = z.object({
-    title: z.string(),
-    body: z.string()
 });
 
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
     userId: userIdSchema,
-    entityType: notificationEntityTypeSchema,
+    entityType: z.nativeEnum(NotificationEntityType),
     entityId: z.string().optional(),
-    name: z.string(),
-    description: z.string().optional(),
     trigger: notificationTriggerSchema,
-    content: notificationContentSchema,
     active: z.boolean(),
     createdAt: z.date(),
     updatedAt: z.date()
 });
 
-export const createNotificationTemplateSchema = notificationTemplateSchema.omit({
-    _id: true,
-    createdAt: true,
-    updatedAt: true
-});
-
-export const entitySyncStateSchema = z.object({
-    userId: userIdSchema,
-    entityType: notificationEntityTypeSchema,
-    entityId: z.string(),
-    synced: z.boolean(),
-    updatedAt: z.date()
-});
-
-export const notificationInstanceSchema = z.object({
-    _id: notificationInstanceIdSchema,
-    templateId: notificationTemplateIdSchema,
-    userId: userIdSchema,
-    entityId: z.string(),
-    scheduledFor: z.date(),
-    status: notificationStatusSchema,
-    sentAt: z.date().optional(),
-    content: z.object({
-        title: z.string(),
-        body: z.string(),
-        data: z.record(z.any()).optional()
-    }),
-    redisId: z.string(),
-    error: z.string().optional(),
-    createdAt: z.date(),
-    updatedAt: z.date()
-});
-
 export const createNotificationTemplateRequestSchema = z.object({
-    entityType: notificationEntityTypeSchema,
+    entityType: z.nativeEnum(NotificationEntityType),
     entityId: z.string().optional(),
-    name: z.string().min(1).max(100),
-    description: z.string().max(500).optional(),
     trigger: z.object({
         type: notificationTriggerTypeSchema,
-        conditions: z.record(z.any()),
-        timing: z.record(z.any())
-    }),
-    content: z.object({
-        title: z.string().min(1).max(200),
-        body: z.string().min(1).max(1000)
     }),
     active: z.boolean().default(true)
 });
 
 export const updateNotificationTemplateRequestSchema = z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
     trigger: z.object({
         type: notificationTriggerTypeSchema,
-        conditions: z.record(z.any()),
-        timing: z.record(z.any())
-    }).optional(),
-    content: z.object({
-        title: z.string(),
-        body: z.string()
     }).optional(),
     active: z.boolean().optional()
 });
 
-export const syncNotificationTemplateRequestSchema = z.object({
-    sync: z.boolean()
-});
-
-export const previewNotificationTemplateRequestSchema = z.object({
-    templateTitle: z.string(),
-    templateBody: z.string(),
-    entityType: z.string(),
-    entityId: z.string()
-});
-
-export const getNotificationInstancesRequestSchema = z.object({
-    status: z.string().optional(),
-    templateId: z.string().optional(),
-    entityId: z.string().optional(),
-    limit: z.number().optional(),
-    offset: z.number().optional()
-});
-
 export const entitySyncRequestSchema = z.object({
-    entityType: z.string(),
+    entityType: z.nativeEnum(NotificationEntityType),
     entityId: z.string(),
     synced: z.boolean()
 });
 
 export const getEntitySyncRequestSchema = z.object({
-    entityType: z.string(),
+    entityType: z.nativeEnum(NotificationEntityType),
     entityId: z.string()
 });
 
 export type NotificationTrigger = z.infer<typeof notificationTriggerSchema>;
-export type NotificationContent = z.infer<typeof notificationContentSchema>;
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
-export type CreateNotificationTemplateData = z.infer<typeof createNotificationTemplateSchema>;
-export type EntitySyncState = z.infer<typeof entitySyncStateSchema>;
-export type NotificationInstanceData = z.infer<typeof notificationInstanceSchema>;
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
-export type SyncNotificationTemplateRequest = z.infer<typeof syncNotificationTemplateRequestSchema>;
-export type PreviewNotificationTemplateRequest = z.infer<typeof previewNotificationTemplateRequestSchema>;
-export type GetNotificationInstancesRequest = z.infer<typeof getNotificationInstancesRequestSchema>;
 export type EntitySyncRequest = z.infer<typeof entitySyncRequestSchema>;
 export type GetEntitySyncRequest = z.infer<typeof getEntitySyncRequestSchema>;
 
@@ -190,24 +94,6 @@ export interface UpdateNotificationTemplateResponse {
 }
 
 export interface DeleteNotificationTemplateResponse {}
-
-export interface SyncNotificationTemplateResponse {
-    synced: boolean;
-}
-
-export interface PreviewNotificationTemplateResponse {
-    preview: {
-        title: string;
-        body: string;
-    };
-}
-
-export interface GetNotificationInstancesResponse {
-    success: boolean;
-    instances?: Serialized<NotificationInstanceData>[];
-    total?: number;
-    error?: string;
-}
 
 export interface EntitySyncResponse {
     success: boolean;

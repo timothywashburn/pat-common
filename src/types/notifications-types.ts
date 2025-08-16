@@ -10,16 +10,14 @@ export interface NotificationContext<T = any> {
     variables: Record<string, any>;
 }
 
+export enum NotificationParentType {
+    AGENDA_PANEL = 'agenda_panel',
+}
+
 export enum NotificationEntityType {
-    AGENDA = 'agenda',
-    TASKS = 'tasks', 
-    HABITS = 'habits',
-    INBOX = 'inbox',
+    INBOX_PANEL = 'inbox_panel',
+    AGENDA_PANEL = 'agenda_item',
     AGENDA_ITEM = 'agenda_item',
-    HABIT = 'habit',
-    AGENDA_DEFAULTS = 'agenda_defaults',
-    HABITS_DEFAULTS = 'habits_defaults',
-    INBOX_PANEL = 'inbox_panel'
 }
 
 export const notificationEntityTypeSchema = z.nativeEnum(NotificationEntityType);

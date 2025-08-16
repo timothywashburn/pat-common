@@ -2,6 +2,14 @@ import { z } from 'zod';
 import { notificationTemplateIdSchema, notificationInstanceIdSchema, userIdSchema } from '../id-types';
 import { Serialized } from '../../utils';
 
+export interface NotificationContext<T = any> {
+    entityId: string;
+    entityType: NotificationEntityType;
+    entityData: T;
+    userId: string;
+    variables: Record<string, any>;
+}
+
 export const notificationEntityTypeSchema = z.enum([
     'agenda', 'tasks', 'habits', 'inbox',
     'agenda_item', 'habit',

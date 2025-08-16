@@ -4,32 +4,23 @@ import { Serialized } from '../utils';
 
 export interface NotificationContext<T = any> {
     entityId: string;
-    entityType: string;
+    entityType: NotificationEntityType;
     entityData: T;
     userId: string;
     variables: Record<string, any>;
 }
 
-/**
- * @deprecated Use string types with NotificationEntityRegistry instead
- * These enums are kept for backward compatibility during migration
- */
 export enum NotificationParentType {
     AGENDA_PANEL = 'agenda_panel',
 }
 
-/**
- * @deprecated Use string types with NotificationEntityRegistry instead
- * These enums are kept for backward compatibility during migration
- */
 export enum NotificationEntityType {
     INBOX_PANEL = 'inbox_panel',
-    AGENDA_PANEL = 'agenda_panel',
+    AGENDA_PANEL = 'agenda_item',
     AGENDA_ITEM = 'agenda_item',
 }
 
-// Updated to use string instead of enum
-export const notificationEntityTypeSchema = z.string();
+export const notificationEntityTypeSchema = z.nativeEnum(NotificationEntityType);
 
 export enum NotificationStatus {
     SCHEDULED = 'scheduled',

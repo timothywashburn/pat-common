@@ -6,7 +6,7 @@ export * from './id-types';
 export * from './people-types';
 export * from './lists-types';
 export * from './notifications-types';
-export * from './notification-entity-config';
 export * from './auth-types';
 export * from './user-types';
 export * from './program-config-types';
+export * from './misc';

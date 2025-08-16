@@ -89,9 +89,7 @@ export interface UpdatePersonResponse {
     person: Serialized<Person>;
 }
 
-export interface DeletePersonResponse {
-    deleted: boolean;
-}
+export interface DeletePersonResponse {}
 
 export interface CreatePersonNoteResponse {
     personNote: Serialized<PersonNoteData>;
@@ -105,6 +103,4 @@ export interface UpdatePersonNoteResponse {
     personNote: Serialized<PersonNoteData>;
 }
 
-export interface DeletePersonNoteResponse {
-    deleted: boolean;
-}
+export interface DeletePersonNoteResponse {}

@@ -162,9 +162,7 @@ export interface UpdateNotificationTemplateResponse {
     template: Serialized<NotificationTemplateData>;
 }
 
-export interface DeleteNotificationTemplateResponse {
-    deleted: boolean;
-}
+export interface DeleteNotificationTemplateResponse {}
 
 export interface SyncNotificationTemplateResponse {
     synced: boolean;

@@ -39,6 +39,4 @@ export interface UpdateThoughtResponse {
     thought: Serialized<ThoughtData>;
 }
 
-export interface DeleteThoughtResponse {
-    deleted: boolean;
-}
+export interface DeleteThoughtResponse {}

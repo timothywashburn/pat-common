@@ -64,6 +64,4 @@ export interface CompleteAgendaItemResponse {
     agendaItem: Serialized<AgendaItemData>;
 }
 
-export interface DeleteAgendaItemResponse {
-    deleted: boolean;
-}
+export interface DeleteAgendaItemResponse {}

@@ -79,9 +79,7 @@ export interface UpdateListResponse {
     list: Serialized<ListData>;
 }
 
-export interface DeleteListResponse {
-    deleted: boolean;
-}
+export interface DeleteListResponse {}
 
 export interface CreateListItemResponse {
     listItem: Serialized<ListItemData>;
@@ -103,6 +101,4 @@ export interface CompleteListItemResponse {
     listItem: Serialized<ListItemData>;
 }
 
-export interface DeleteListItemResponse {
-    deleted: boolean;
-}
+export interface DeleteListItemResponse {}

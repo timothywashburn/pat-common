@@ -99,14 +99,10 @@ export interface UpdateHabitResponse {
     habit: Serialized<Habit>;
 }
 
-export interface DeleteHabitResponse {
-    deleted: boolean;
-}
+export interface DeleteHabitResponse {}
 
 export interface CreateHabitEntryResponse {
     habit: Serialized<Habit>;
 }
 
-export interface DeleteHabitEntryResponse {
-    habit: Serialized<Habit>;
-}
+export interface DeleteHabitEntryResponse {}

@@ -10,15 +10,35 @@ export interface NotificationContext<T = any> {
     variables: Record<string, any>;
 }
 
-export const notificationEntityTypeSchema = z.enum([
-    'agenda', 'tasks', 'habits', 'inbox',
-    'agenda_item', 'habit',
-    'agenda_defaults', 'habits_defaults'
-]);
+export enum NotificationEntityType {
+    AGENDA = 'agenda',
+    TASKS = 'tasks', 
+    HABITS = 'habits',
+    INBOX = 'inbox',
+    AGENDA_ITEM = 'agenda_item',
+    HABIT = 'habit',
+    AGENDA_DEFAULTS = 'agenda_defaults',
+    HABITS_DEFAULTS = 'habits_defaults',
+    INBOX_PANEL = 'inbox_panel'
+}
 
-export const notificationStatusSchema = z.enum(['scheduled', 'sent', 'failed', 'cancelled']);
+export const notificationEntityTypeSchema = z.nativeEnum(NotificationEntityType);
 
-export const notificationTriggerTypeSchema = z.enum(['time_based', 'event_based', 'recurring']);
+export enum NotificationStatus {
+    SCHEDULED = 'scheduled',
+    SENT = 'sent', 
+    FAILED = 'failed',
+    CANCELLED = 'cancelled'
+}
+
+export enum NotificationTriggerType {
+    TIME_BASED = 'time_based',
+    EVENT_BASED = 'event_based',
+    RECURRING = 'recurring'
+}
+
+export const notificationStatusSchema = z.nativeEnum(NotificationStatus);
+export const notificationTriggerTypeSchema = z.nativeEnum(NotificationTriggerType);
 
 export const notificationTriggerSchema = z.object({
     type: notificationTriggerTypeSchema,
@@ -138,9 +158,17 @@ export const getNotificationInstancesRequestSchema = z.object({
     offset: z.number().optional()
 });
 
-export type NotificationEntityType = z.infer<typeof notificationEntityTypeSchema>;
-export type NotificationTriggerType = z.infer<typeof notificationTriggerTypeSchema>;
-export type NotificationStatus = z.infer<typeof notificationStatusSchema>;
+export const entitySyncRequestSchema = z.object({
+    entityType: z.string(),
+    entityId: z.string(),
+    synced: z.boolean()
+});
+
+export const getEntitySyncRequestSchema = z.object({
+    entityType: z.string(),
+    entityId: z.string()
+});
+
 export type NotificationTrigger = z.infer<typeof notificationTriggerSchema>;
 export type NotificationContent = z.infer<typeof notificationContentSchema>;
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
@@ -153,6 +181,8 @@ export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificatio
 export type SyncNotificationTemplateRequest = z.infer<typeof syncNotificationTemplateRequestSchema>;
 export type PreviewNotificationTemplateRequest = z.infer<typeof previewNotificationTemplateRequestSchema>;
 export type GetNotificationInstancesRequest = z.infer<typeof getNotificationInstancesRequestSchema>;
+export type EntitySyncRequest = z.infer<typeof entitySyncRequestSchema>;
+export type GetEntitySyncRequest = z.infer<typeof getEntitySyncRequestSchema>;
 
 export interface CreateNotificationTemplateResponse {
     template: Serialized<NotificationTemplateData>;
@@ -189,5 +219,19 @@ export interface GetNotificationInstancesResponse {
     success: boolean;
     instances?: Serialized<NotificationInstanceData>[];
     total?: number;
+    error?: string;
+}
+
+export interface EntitySyncResponse {
+    success: boolean;
+    synced: boolean;
+    templates?: Serialized<NotificationTemplateData>[];
+    error?: string;
+}
+
+export interface GetEntitySyncResponse {
+    success: boolean;
+    synced: boolean;
+    hasParentTemplates: boolean;
     error?: string;
 }

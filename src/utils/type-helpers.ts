@@ -1,7 +1,7 @@
-import { AuthData } from '../types';
+import { AuthData, PublicAuthData } from '../types';
 import { HabitData, HabitEntryData, HabitStats, Habit } from '../types';
 
-export type PublicAuthData = Pick<AuthData, 'email' | 'emailVerified'> & { readonly __brand: unique symbol };
+// export type PublicAuthData = Pick<AuthData, 'email' | 'emailVerified'> & { readonly __brand: unique symbol };
 
 export function toPublicAuthData(data: AuthData): PublicAuthData {
     return {

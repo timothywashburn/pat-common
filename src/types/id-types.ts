@@ -24,10 +24,10 @@ export type ListId = string & { readonly __brand: "ListId" };
 export const listItemIdSchema = z.string().transform((val): ListItemId => val as ListItemId);
 export type ListItemId = string & { readonly __brand: "ListItemId" };
 
-export const habitIdSchema = z.string().transform((val): ListId => val as ListId);
+export const habitIdSchema = z.string().transform((val): HabitId => val as HabitId);
 export type HabitId = string & { readonly __brand: "HabitId" };
 
-export const habitEntryIdSchema = z.string().transform((val): ListId => val as ListId);
+export const habitEntryIdSchema = z.string().transform((val): HabitEntryId => val as HabitEntryId);
 export type HabitEntryId = string & { readonly __brand: "HabitEntryId" };
 
 export const notificationTemplateIdSchema = z.string().transform((val): NotificationTemplateId => val as NotificationTemplateId);

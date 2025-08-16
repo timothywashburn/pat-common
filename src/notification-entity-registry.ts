@@ -169,19 +169,19 @@ export class NotificationEntityRegistry {
      * Register default entity configurations
      */
     private registerDefaultEntities(): void {
-        // Agenda Panel (static parent of agenda items)
+        // Agenda Panel (dynamic parent for agenda items based on category)
         this.registerEntity({
             entityType: 'agenda_panel',
             parentResolver: {
                 type: 'static',
-                parentType: 'agenda_panel' // Self-referencing for panel level
+                parentType: 'agenda_panel' // Panel level templates
             },
             displayName: 'Agenda Panel',
             icon: 'calendar',
-            description: 'Default notification templates for all agenda items'
+            description: 'Default agenda panel templates'
         });
 
-        // Agenda Item (can have dynamic parent based on category)
+        // Agenda Item (dynamic parent based on category)
         this.registerEntity({
             entityType: 'agenda_item',
             parentResolver: {
@@ -195,16 +195,40 @@ export class NotificationEntityRegistry {
             description: 'Individual agenda item notifications'
         });
 
-        // Inbox Panel
+        // Habits Panel (static parent for habits)
+        this.registerEntity({
+            entityType: 'habits_panel',
+            parentResolver: {
+                type: 'static',
+                parentType: 'habits_panel'
+            },
+            displayName: 'Habits Panel',
+            icon: 'fitness',
+            description: 'Default habits panel templates'
+        });
+
+        // Habit (static parent - all habits inherit from habits panel)
+        this.registerEntity({
+            entityType: 'habit',
+            parentResolver: {
+                type: 'static',
+                parentType: 'habits_panel'
+            },
+            displayName: 'Habit',
+            icon: 'fitness',
+            description: 'Individual habit notifications'
+        });
+
+        // Inbox Panel (no parent - top level)
         this.registerEntity({
             entityType: 'inbox_panel',
             parentResolver: {
                 type: 'static',
-                parentType: 'inbox_panel' // Self-referencing for panel level
+                parentType: '' // No parent - this is a top-level entity
             },
             displayName: 'Inbox Panel',
             icon: 'mail',
-            description: 'Inbox notification templates'
+            description: 'Inbox notifications'
         });
     }
 }

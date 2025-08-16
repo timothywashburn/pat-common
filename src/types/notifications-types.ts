@@ -55,8 +55,7 @@ export const notificationTriggerSchema = z.object({
 
 export const notificationContentSchema = z.object({
     title: z.string(),
-    body: z.string(),
-    variables: z.record(z.string()).optional()
+    body: z.string()
 });
 
 export const notificationTemplateSchema = z.object({
@@ -69,8 +68,6 @@ export const notificationTemplateSchema = z.object({
     trigger: notificationTriggerSchema,
     content: notificationContentSchema,
     active: z.boolean(),
-    inheritedFrom: notificationTemplateIdSchema.optional(),
-    customized: z.boolean(),
     createdAt: z.date(),
     updatedAt: z.date()
 });
@@ -120,12 +117,9 @@ export const createNotificationTemplateRequestSchema = z.object({
     }),
     content: z.object({
         title: z.string().min(1).max(200),
-        body: z.string().min(1).max(1000),
-        variables: z.record(z.string()).optional()
+        body: z.string().min(1).max(1000)
     }),
-    active: z.boolean().default(true),
-    inheritedFrom: z.string().optional(),
-    customized: z.boolean().default(false)
+    active: z.boolean().default(true)
 });
 
 export const updateNotificationTemplateRequestSchema = z.object({
@@ -138,11 +132,9 @@ export const updateNotificationTemplateRequestSchema = z.object({
     }).optional(),
     content: z.object({
         title: z.string(),
-        body: z.string(),
-        variables: z.record(z.string()).optional()
+        body: z.string()
     }).optional(),
-    active: z.boolean().optional(),
-    customized: z.boolean().optional()
+    active: z.boolean().optional()
 });
 
 export const syncNotificationTemplateRequestSchema = z.object({
@@ -153,8 +145,7 @@ export const previewNotificationTemplateRequestSchema = z.object({
     templateTitle: z.string(),
     templateBody: z.string(),
     entityType: z.string(),
-    entityId: z.string(),
-    variables: z.record(z.any()).optional()
+    entityId: z.string()
 });
 
 export const getNotificationInstancesRequestSchema = z.object({
@@ -217,9 +208,7 @@ export interface PreviewNotificationTemplateResponse {
     preview: {
         title: string;
         body: string;
-        variables: Record<string, any>;
     };
-    missingVariables: string[];
 }
 
 export interface GetNotificationInstancesResponse {

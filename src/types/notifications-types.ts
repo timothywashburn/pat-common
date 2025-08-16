@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { notificationTemplateIdSchema, notificationInstanceIdSchema, userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
+import { notificationTemplateIdSchema, notificationInstanceIdSchema, userIdSchema } from './id-types';
+import { Serialized } from '../utils';
 
 export interface NotificationContext<T = any> {
     entityId: string;

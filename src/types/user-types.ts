@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
-import { ModuleType } from '../../enums';
+import { userIdSchema } from './id-types';
+import { Serialized } from '../utils';
+import { ModuleType } from '../enums';
 
 export const moduleSchema = z.object({
     type: z.nativeEnum(ModuleType),

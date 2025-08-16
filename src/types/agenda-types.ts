@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { itemIdSchema, userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
+import { itemIdSchema, userIdSchema } from './id-types';
+import { Serialized } from '../utils';
 
 export const agendaItemSchema = z.object({
     _id: itemIdSchema,

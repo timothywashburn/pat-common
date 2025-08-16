@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { thoughtIdSchema, userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
+import { thoughtIdSchema, userIdSchema } from './id-types';
+import { Serialized } from '../utils';
 
 export const thoughtSchema = z.object({
     _id: thoughtIdSchema,

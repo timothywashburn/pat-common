@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { habitIdSchema, habitEntryIdSchema, userIdSchema } from '../id-types';
-import { dateOnlyStringSchema } from '../misc-types';
-import { Serialized } from '../../utils';
+import { habitIdSchema, habitEntryIdSchema, userIdSchema } from './id-types';
+import { dateOnlyStringSchema } from './misc/misc-types';
+import { Serialized } from '../utils';
 
 export enum HabitFrequency {
     DAILY = 'daily',

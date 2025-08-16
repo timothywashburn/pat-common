@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { authIdSchema, userIdSchema } from '../id-types';
+import { authIdSchema, userIdSchema } from './id-types';
 
 export const authTokensSchema = z.object({
     accessToken: z.string(),

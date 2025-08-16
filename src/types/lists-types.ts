@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { listIdSchema, listItemIdSchema, userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
+import { listIdSchema, listItemIdSchema, userIdSchema } from './id-types';
+import { Serialized } from '../utils';
 
 export enum ListType {
     TASKS = 'tasks',

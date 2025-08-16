@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { personIdSchema, personNoteIdSchema, userIdSchema } from '../id-types';
-import { Serialized } from '../../utils';
+import { personIdSchema, personNoteIdSchema, userIdSchema } from './id-types';
+import { Serialized } from '../utils';
 
 export const personPropertySchema = z.object({
     key: z.string(),

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { notificationTemplateIdSchema, userIdSchema } from '../id-types';
+import { notificationTemplateIdSchema, notificationInstanceIdSchema, userIdSchema } from '../id-types';
 import { Serialized } from '../../utils';
 
 export const notificationEntityTypeSchema = z.enum([
@@ -7,6 +7,8 @@ export const notificationEntityTypeSchema = z.enum([
     'agenda_item', 'habit',
     'agenda_defaults', 'habits_defaults'
 ]);
+
+export const notificationStatusSchema = z.enum(['scheduled', 'sent', 'failed', 'cancelled']);
 
 export const notificationTriggerTypeSchema = z.enum(['time_based', 'event_based', 'recurring']);
 
@@ -52,6 +54,25 @@ export const entitySyncStateSchema = z.object({
     updatedAt: z.date()
 });
 
+export const notificationInstanceSchema = z.object({
+    _id: notificationInstanceIdSchema,
+    templateId: notificationTemplateIdSchema,
+    userId: userIdSchema,
+    entityId: z.string(),
+    scheduledFor: z.date(),
+    status: notificationStatusSchema,
+    sentAt: z.date().optional(),
+    content: z.object({
+        title: z.string(),
+        body: z.string(),
+        data: z.record(z.any()).optional()
+    }),
+    redisId: z.string(),
+    error: z.string().optional(),
+    createdAt: z.date(),
+    updatedAt: z.date()
+});
+
 export const createNotificationTemplateRequestSchema = z.object({
     entityType: notificationEntityTypeSchema,
     entityId: z.string().optional(),
@@ -90,27 +111,40 @@ export const updateNotificationTemplateRequestSchema = z.object({
 });
 
 export const syncNotificationTemplateRequestSchema = z.object({
-    entityType: notificationEntityTypeSchema,
-    entityId: z.string()
+    sync: z.boolean()
 });
 
 export const previewNotificationTemplateRequestSchema = z.object({
-    templateId: notificationTemplateIdSchema,
-    entityData: z.record(z.any()).optional()
+    templateTitle: z.string(),
+    templateBody: z.string(),
+    entityType: z.string(),
+    entityId: z.string(),
+    variables: z.record(z.any()).optional()
+});
+
+export const getNotificationInstancesRequestSchema = z.object({
+    status: z.string().optional(),
+    templateId: z.string().optional(),
+    entityId: z.string().optional(),
+    limit: z.number().optional(),
+    offset: z.number().optional()
 });
 
 export type NotificationEntityType = z.infer<typeof notificationEntityTypeSchema>;
 export type NotificationTriggerType = z.infer<typeof notificationTriggerTypeSchema>;
+export type NotificationStatus = z.infer<typeof notificationStatusSchema>;
 export type NotificationTrigger = z.infer<typeof notificationTriggerSchema>;
 export type NotificationContent = z.infer<typeof notificationContentSchema>;
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
 export type CreateNotificationTemplateData = z.infer<typeof createNotificationTemplateSchema>;
 export type EntitySyncState = z.infer<typeof entitySyncStateSchema>;
+export type NotificationInstanceData = z.infer<typeof notificationInstanceSchema>;
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
 export type SyncNotificationTemplateRequest = z.infer<typeof syncNotificationTemplateRequestSchema>;
 export type PreviewNotificationTemplateRequest = z.infer<typeof previewNotificationTemplateRequestSchema>;
+export type GetNotificationInstancesRequest = z.infer<typeof getNotificationInstancesRequestSchema>;
 
 export interface CreateNotificationTemplateResponse {
     template: Serialized<NotificationTemplateData>;
@@ -140,5 +174,14 @@ export interface PreviewNotificationTemplateResponse {
     preview: {
         title: string;
         body: string;
+        variables: Record<string, any>;
     };
+    missingVariables: string[];
+}
+
+export interface GetNotificationInstancesResponse {
+    success: boolean;
+    instances?: Serialized<NotificationInstanceData>[];
+    total?: number;
+    error?: string;
 }

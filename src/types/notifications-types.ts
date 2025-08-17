@@ -15,9 +15,10 @@ export enum NotificationTemplateLevel {
 }
 
 export enum NotificationEntityType {
-    INBOX_PANEL = 'inbox_panel',
-    AGENDA_PANEL = 'agenda_item',
     AGENDA_ITEM = 'agenda_item',
+
+    AGENDA_PANEL = 'agenda_item',
+    INBOX_PANEL = 'inbox_panel',
 }
 
 export enum NotificationTriggerType {
@@ -47,8 +48,9 @@ export const notificationTemplateSchema = z.object({
 });
 
 export const createNotificationTemplateRequestSchema = z.object({
-    entityType: z.nativeEnum(NotificationEntityType),
-    entityId: z.string().optional(),
+    targetLevel: z.nativeEnum(NotificationTemplateLevel),
+    targetEntityType: z.nativeEnum(NotificationEntityType),
+    targetId: z.string().optional(),
     trigger: z.object({
         type: notificationTriggerTypeSchema,
     }),
@@ -63,14 +65,14 @@ export const updateNotificationTemplateRequestSchema = z.object({
 });
 
 export const entitySyncRequestSchema = z.object({
-    entityType: z.nativeEnum(NotificationEntityType),
-    entityId: z.string(),
+    targetEntityType: z.nativeEnum(NotificationEntityType),
+    targetId: z.string(),
     synced: z.boolean()
 });
 
 export const getEntitySyncRequestSchema = z.object({
-    entityType: z.nativeEnum(NotificationEntityType),
-    entityId: z.string()
+    targetEntityType: z.nativeEnum(NotificationEntityType),
+    targetId: z.string()
 });
 
 export type NotificationTrigger = z.infer<typeof notificationTriggerSchema>;

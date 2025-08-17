@@ -9,16 +9,11 @@ export interface NotificationContext<T = any> {
     userId: string;
 }
 
-// should always include all values from NotificationEntityType
-export enum TargetType {
+export enum NotificationTemplateLevel {
     PARENT = 'parent',
-
-    INBOX_PANEL = 'inbox_panel',
-    AGENDA_PANEL = 'agenda_item',
-    AGENDA_ITEM = 'agenda_item',
+    ENTITY = 'entity'
 }
 
-// update TargetType after modifying
 export enum NotificationEntityType {
     INBOX_PANEL = 'inbox_panel',
     AGENDA_PANEL = 'agenda_item',
@@ -40,7 +35,7 @@ export const notificationTriggerSchema = z.object({
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
     userId: userIdSchema,
-    targetType: z.nativeEnum(TargetType),
+    targetType: z.nativeEnum(NotificationTemplateLevel),
     targetId: z.string(),
     // entityType: z.nativeEnum(NotificationEntityType),
     // entityId: z.string().optional(),

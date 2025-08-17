@@ -35,7 +35,8 @@ export const notificationTriggerSchema = z.object({
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
     userId: userIdSchema,
-    targetType: z.nativeEnum(NotificationTemplateLevel),
+    targetLevel: z.nativeEnum(NotificationTemplateLevel),
+    targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string(),
     // entityType: z.nativeEnum(NotificationEntityType),
     // entityId: z.string().optional(),

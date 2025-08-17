@@ -9,6 +9,11 @@ export interface NotificationContext<T = any> {
     userId: string;
 }
 
+export enum TargetType {
+    PARENT = 'parent',
+    ENTITY = 'entity'
+}
+
 export enum NotificationParentType {
     AGENDA_PANEL = 'agenda_panel',
 }
@@ -34,8 +39,10 @@ export const notificationTriggerSchema = z.object({
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
     userId: userIdSchema,
-    entityType: z.nativeEnum(NotificationEntityType),
-    entityId: z.string().optional(),
+    targetType: z.nativeEnum(TargetType),
+    targetId: z.string(),
+    // entityType: z.nativeEnum(NotificationEntityType),
+    // entityId: z.string().optional(),
     trigger: notificationTriggerSchema,
     active: z.boolean(),
     createdAt: z.date(),

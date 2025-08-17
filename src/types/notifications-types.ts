@@ -9,15 +9,16 @@ export interface NotificationContext<T = any> {
     userId: string;
 }
 
+// should always include all values from NotificationEntityType
 export enum TargetType {
     PARENT = 'parent',
-    ENTITY = 'entity'
+
+    INBOX_PANEL = 'inbox_panel',
+    AGENDA_PANEL = 'agenda_item',
+    AGENDA_ITEM = 'agenda_item',
 }
 
-export enum NotificationParentType {
-    AGENDA_PANEL = 'agenda_panel',
-}
-
+// update TargetType after modifying
 export enum NotificationEntityType {
     INBOX_PANEL = 'inbox_panel',
     AGENDA_PANEL = 'agenda_item',

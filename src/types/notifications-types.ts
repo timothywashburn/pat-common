@@ -51,9 +51,7 @@ export const createNotificationTemplateRequestSchema = z.object({
     targetLevel: z.nativeEnum(NotificationTemplateLevel),
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string().optional(),
-    trigger: z.object({
-        type: notificationTriggerTypeSchema,
-    }),
+    trigger: notificationTriggerSchema,
     active: z.boolean().default(true)
 });
 
@@ -111,6 +109,5 @@ export interface EntitySyncResponse {
 export interface GetEntitySyncResponse {
     success: boolean;
     synced: boolean;
-    hasParentTemplates: boolean;
     error?: string;
 }

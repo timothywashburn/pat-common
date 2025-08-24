@@ -26,6 +26,10 @@ export enum NotificationSchedulerType {
     RELATIVE_DATE = 'relative_date',
 }
 
+export enum NotificationVariantType {
+    AGENDA_ITEM_UPCOMING_DEADLINE = 'agenda_item_upcoming_deadline',
+}
+
 export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
     z.object({
         type: z.literal(NotificationSchedulerType.DAY_TIME),

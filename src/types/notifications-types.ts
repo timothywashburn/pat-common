@@ -22,16 +22,22 @@ export enum NotificationEntityType {
 }
 
 export enum NotificationTriggerType {
-    TIME_BASED = 'time_based',
-    EVENT_BASED = 'event_based',
-    RECURRING = 'recurring'
+    DAY_TIME = 'day_time',
+    RELATIVE_DATE = 'relative_date',
 }
 
-export const notificationTriggerTypeSchema = z.nativeEnum(NotificationTriggerType);
-
-export const notificationTriggerSchema = z.object({
-    type: notificationTriggerTypeSchema,
-});
+export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
+    z.object({
+        type: z.literal(NotificationTriggerType.DAY_TIME),
+        days: z.array(z.number().min(0).max(6)),
+        time: z.string().regex(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/), // HH:mm format
+    }),
+    z.object({
+        type: z.literal(NotificationTriggerType.RELATIVE_DATE),
+        date: z.string(),
+        offsetMinutes: z.number().int()
+    })
+])
 
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
@@ -39,9 +45,8 @@ export const notificationTemplateSchema = z.object({
     targetLevel: z.nativeEnum(NotificationTemplateLevel),
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string(),
-    // entityType: z.nativeEnum(NotificationEntityType),
-    // entityId: z.string().optional(),
-    trigger: notificationTriggerSchema,
+    schedulerData: notificationSchedulerDataSchema,
+    variantData: z.any().optional(),
     active: z.boolean(),
     createdAt: z.date(),
     updatedAt: z.date()
@@ -51,14 +56,14 @@ export const createNotificationTemplateRequestSchema = z.object({
     targetLevel: z.nativeEnum(NotificationTemplateLevel),
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string().optional(),
-    trigger: notificationTriggerSchema,
+    schedulerData: notificationSchedulerDataSchema,
+    variantData: z.any().optional(),
     active: z.boolean().default(true)
 });
 
 export const updateNotificationTemplateRequestSchema = z.object({
-    trigger: z.object({
-        type: notificationTriggerTypeSchema,
-    }).optional(),
+    schedulerData: notificationSchedulerDataSchema,
+    variantData: z.any().optional(),
     active: z.boolean().optional()
 });
 
@@ -73,7 +78,7 @@ export const getEntitySyncRequestSchema = z.object({
     targetId: z.string()
 });
 
-export type NotificationTrigger = z.infer<typeof notificationTriggerSchema>;
+export type NotificationTrigger = z.infer<typeof notificationSchedulerDataSchema>;
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;

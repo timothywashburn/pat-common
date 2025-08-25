@@ -16,6 +16,7 @@ export enum NotificationTemplateLevel {
 
 export enum NotificationEntityType {
     AGENDA_ITEM = 'agenda_item',
+    HABIT = 'habit',
 
     AGENDA_PANEL = 'agenda_item',
     INBOX_PANEL = 'inbox_panel',

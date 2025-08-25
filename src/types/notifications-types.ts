@@ -39,7 +39,6 @@ export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
     }),
     z.object({
         type: z.literal(NotificationSchedulerType.RELATIVE_DATE),
-        date: z.string(),
         offsetMinutes: z.number().int()
     })
 ])

@@ -28,7 +28,7 @@ export enum NotificationSchedulerType {
 
 export enum NotificationVariantType {
     AGENDA_ITEM_UPCOMING_DEADLINE = 'agenda_item_upcoming_deadline',
-    HABIT_UPCOMING_DEADLINE = 'habit_upcoming_deadline',
+    HABIT_INCOMPLETE = 'habit_incomplete',
 }
 
 export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [

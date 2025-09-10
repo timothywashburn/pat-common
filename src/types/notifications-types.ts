@@ -72,15 +72,15 @@ export const updateNotificationTemplateRequestSchema = z.object({
     active: z.boolean().optional()
 });
 
-export const entitySyncRequestSchema = z.object({
-    targetEntityType: z.nativeEnum(NotificationEntityType),
-    targetId: z.string(),
-    synced: z.boolean()
-});
-
 export const getEntitySyncRequestSchema = z.object({
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string()
+});
+
+export const setEntitySyncRequestSchema = z.object({
+    targetEntityType: z.nativeEnum(NotificationEntityType),
+    targetId: z.string(),
+    synced: z.boolean()
 });
 
 export type NotificationTrigger = z.infer<typeof notificationSchedulerDataSchema>;
@@ -88,7 +88,7 @@ export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
-export type EntitySyncRequest = z.infer<typeof entitySyncRequestSchema>;
+export type EntitySyncRequest = z.infer<typeof setEntitySyncRequestSchema>;
 export type GetEntitySyncRequest = z.infer<typeof getEntitySyncRequestSchema>;
 
 export interface CreateNotificationTemplateResponse {
@@ -109,15 +109,10 @@ export interface UpdateNotificationTemplateResponse {
 
 export interface DeleteNotificationTemplateResponse {}
 
-export interface EntitySyncResponse {
-    success: boolean;
+export interface GetEntitySyncResponse {
     synced: boolean;
-    templates?: Serialized<NotificationTemplateData>[];
-    error?: string;
 }
 
-export interface GetEntitySyncResponse {
-    success: boolean;
+export interface SetEntitySyncResponse {
     synced: boolean;
-    error?: string;
 }

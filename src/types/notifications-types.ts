@@ -59,6 +59,7 @@ export const notificationTemplateSchema = z.object({
 
 export const notificationDesyncSchema = z.object({
     _id: notificationDesyncIdSchema,
+    userId: userIdSchema,
     targetId: z.string(),
     createdAt: z.date(),
     updatedAt: z.date()

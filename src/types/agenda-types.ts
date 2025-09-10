@@ -52,10 +52,6 @@ export interface GetAgendaItemsResponse {
     agendaItems: Serialized<AgendaItemData>[];
 }
 
-export interface GetAgendaItemResponse {
-    agendaItem: Serialized<AgendaItemData>;
-}
-
 export interface UpdateAgendaItemResponse {
     agendaItem: Serialized<AgendaItemData>;
 }

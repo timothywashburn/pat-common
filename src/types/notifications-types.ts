@@ -88,8 +88,9 @@ export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
-export type EntitySyncRequest = z.infer<typeof setEntitySyncRequestSchema>;
+
 export type GetEntitySyncRequest = z.infer<typeof getEntitySyncRequestSchema>;
+export type SetEntitySyncRequest = z.infer<typeof setEntitySyncRequestSchema>;
 
 export interface CreateNotificationTemplateResponse {
     template: Serialized<NotificationTemplateData>;
@@ -97,10 +98,6 @@ export interface CreateNotificationTemplateResponse {
 
 export interface GetNotificationTemplatesResponse {
     templates: Serialized<NotificationTemplateData>[];
-}
-
-export interface GetNotificationTemplateResponse {
-    template: Serialized<NotificationTemplateData>;
 }
 
 export interface UpdateNotificationTemplateResponse {

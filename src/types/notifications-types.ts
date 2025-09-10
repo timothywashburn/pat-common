@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { notificationTemplateIdSchema, notificationSyncIdSchema, userIdSchema } from './id-types';
+import { notificationTemplateIdSchema, notificationDesyncIdSchema, userIdSchema } from './id-types';
 import { Serialized } from '../utils';
 
 export interface NotificationContext<T = any> {
@@ -57,8 +57,8 @@ export const notificationTemplateSchema = z.object({
     updatedAt: z.date()
 });
 
-export const notificationSyncSchema = z.object({
-    _id: notificationSyncIdSchema,
+export const notificationDesyncSchema = z.object({
+    _id: notificationDesyncIdSchema,
     targetId: z.string(),
     createdAt: z.date(),
     updatedAt: z.date()
@@ -91,7 +91,7 @@ export const setEntitySyncRequestSchema = z.object({
 });
 
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
-export type NotificationSyncData = z.infer<typeof notificationSyncSchema>;
+export type NotificationDesyncData = z.infer<typeof notificationDesyncSchema>;
 
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;

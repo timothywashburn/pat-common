@@ -14,6 +14,12 @@ export enum NotificationTemplateLevel {
     ENTITY = 'entity'
 }
 
+export enum NotificationTemplateSyncState {
+    SYNCED = 'synced',
+    DESYNCED = 'desynced',
+    NO_PARENT = 'no_parent'
+}
+
 export enum NotificationEntityType {
     AGENDA_ITEM = 'agenda_item',
     HABIT = 'habit',

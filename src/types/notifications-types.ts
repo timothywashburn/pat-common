@@ -121,9 +121,9 @@ export interface UpdateNotificationTemplateResponse {
 export interface DeleteNotificationTemplateResponse {}
 
 export interface GetEntitySyncResponse {
-    synced: boolean;
+    syncState: NotificationTemplateSyncState;
 }
 
 export interface SetEntitySyncResponse {
-    synced: boolean;
+    syncState: NotificationTemplateSyncState;
 }

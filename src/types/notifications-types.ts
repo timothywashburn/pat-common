@@ -94,7 +94,7 @@ export const getEntitySyncRequestSchema = z.object({
 export const setEntitySyncRequestSchema = z.object({
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string(),
-    synced: z.boolean()
+    syncState: z.nativeEnum(NotificationTemplateSyncState)
 });
 
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;

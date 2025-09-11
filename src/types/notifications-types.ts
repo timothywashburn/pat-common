@@ -18,7 +18,7 @@ export enum NotificationEntityType {
     AGENDA_ITEM = 'agenda_item',
     HABIT = 'habit',
 
-    AGENDA_PANEL = 'agenda_item',
+    AGENDA_PANEL = 'agenda_panel',
     INBOX_PANEL = 'inbox_panel',
 }
 

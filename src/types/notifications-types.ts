@@ -34,16 +34,18 @@ export enum NotificationSchedulerType {
 }
 
 export enum NotificationVariantType {
-    AGENDA_ITEM_UPCOMING_DEADLINE = 'agenda_item_upcoming_deadline',
-    HABIT_INCOMPLETE = 'habit_incomplete',
+    AGENDA_ITEM_DUE = 'agenda_item_due',
+    HABIT_TIMED_REMINDER = 'habit_timed_reminder',
+    HABIT_DUE = 'habit_due',
 }
 
 export const ENTITY_TYPE_VARIANT_MAP: Record<NotificationEntityType, NotificationVariantType[]> = {
     [NotificationEntityType.AGENDA_ITEM]: [
-        NotificationVariantType.AGENDA_ITEM_UPCOMING_DEADLINE,
+        NotificationVariantType.AGENDA_ITEM_DUE,
     ],
     [NotificationEntityType.HABIT]: [
-        NotificationVariantType.HABIT_INCOMPLETE,
+        NotificationVariantType.HABIT_TIMED_REMINDER,
+        NotificationVariantType.HABIT_DUE,
     ],
     [NotificationEntityType.AGENDA_PANEL]: [],
     [NotificationEntityType.INBOX_PANEL]: [],
@@ -59,7 +61,19 @@ export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
         type: z.literal(NotificationSchedulerType.RELATIVE_DATE),
         offsetMinutes: z.number().int()
     })
-])
+]);
+
+export const notificationVariantDataSchema = z.discriminatedUnion('type', [
+    z.object({
+        type: z.literal(NotificationVariantType.AGENDA_ITEM_DUE),
+    }),
+    z.object({
+        type: z.literal(NotificationVariantType.HABIT_TIMED_REMINDER),
+    }),
+    z.object({
+        type: z.literal(NotificationVariantType.HABIT_DUE),
+    })
+]);
 
 export const notificationTemplateSchema = z.object({
     _id: notificationTemplateIdSchema,
@@ -68,7 +82,7 @@ export const notificationTemplateSchema = z.object({
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string(),
     schedulerData: notificationSchedulerDataSchema,
-    variantData: z.any(),
+    variantData: notificationVariantDataSchema,
     active: z.boolean(),
     createdAt: z.date(),
     updatedAt: z.date()
@@ -87,13 +101,13 @@ export const createNotificationTemplateRequestSchema = z.object({
     targetEntityType: z.nativeEnum(NotificationEntityType),
     targetId: z.string().optional(),
     schedulerData: notificationSchedulerDataSchema,
-    variantData: z.any(),
+    variantData: notificationVariantDataSchema,
     active: z.boolean().default(true)
 });
 
 export const updateNotificationTemplateRequestSchema = z.object({
     schedulerData: notificationSchedulerDataSchema.optional(),
-    variantData: z.any().optional(),
+    variantData: notificationVariantDataSchema.optional(),
     active: z.boolean().optional()
 });
 

@@ -9,15 +9,15 @@ export interface NotificationContext<T = any> {
     userId: string;
 }
 
-export enum NotificationTemplateLevel {
-    PARENT = 'parent',
-    ENTITY = 'entity'
-}
-
 export enum NotificationTemplateSyncState {
     SYNCED = 'synced',
     DESYNCED = 'desynced',
     NO_PARENT = 'no_parent'
+}
+
+export enum NotificationTemplateLevel {
+    PARENT = 'parent',
+    ENTITY = 'entity'
 }
 
 export enum NotificationEntityType {
@@ -37,6 +37,17 @@ export enum NotificationVariantType {
     AGENDA_ITEM_UPCOMING_DEADLINE = 'agenda_item_upcoming_deadline',
     HABIT_INCOMPLETE = 'habit_incomplete',
 }
+
+export const ENTITY_TYPE_VARIANT_MAP: Record<NotificationEntityType, NotificationVariantType[]> = {
+    [NotificationEntityType.AGENDA_ITEM]: [
+        NotificationVariantType.AGENDA_ITEM_UPCOMING_DEADLINE,
+    ],
+    [NotificationEntityType.HABIT]: [
+        NotificationVariantType.HABIT_INCOMPLETE,
+    ],
+    [NotificationEntityType.AGENDA_PANEL]: [],
+    [NotificationEntityType.INBOX_PANEL]: [],
+} as const;
 
 export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
     z.object({

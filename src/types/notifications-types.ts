@@ -26,6 +26,7 @@ export enum NotificationEntityType {
 
     AGENDA_PANEL = 'agenda_panel',
     INBOX_PANEL = 'inbox_panel',
+    HABIT_PANEL = 'habit_panel',
 }
 
 export enum NotificationSchedulerType {
@@ -49,6 +50,7 @@ export const ENTITY_TYPE_VARIANT_MAP: Record<NotificationEntityType, Notificatio
     ],
     [NotificationEntityType.AGENDA_PANEL]: [],
     [NotificationEntityType.INBOX_PANEL]: [],
+    [NotificationEntityType.HABIT_PANEL]: [],
 } as const;
 
 export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [

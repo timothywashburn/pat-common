@@ -34,7 +34,9 @@ export const habitDataSchema = z.object({
     description: z.string().nullable().optional(),
     notes: z.string().nullable().optional(),
     frequency: z.nativeEnum(HabitFrequency),
-    rolloverTime: z.string(),
+    rolloverTime: z.string(), // TODO: deprecated
+    startOffsetMinutes: z.number(),
+    endOffsetMinutes: z.number(),
     firstDay: dateOnlyStringSchema,
     createdAt: z.date(),
     updatedAt: z.date()
@@ -58,7 +60,9 @@ export const createHabitRequestSchema = z.object({
     description: z.string().trim().optional(),
     notes: z.string().trim().optional(),
     frequency: z.nativeEnum(HabitFrequency),
-    rolloverTime: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/)
+    rolloverTime: z.string(), // TODO: deprecated
+    startOffsetMinutes: z.number(),
+    endOffsetMinutes: z.number(),
 });
 
 export const updateHabitRequestSchema = z.object({
@@ -66,7 +70,9 @@ export const updateHabitRequestSchema = z.object({
     description: z.string().trim().nullish(),
     notes: z.string().trim().nullish(),
     frequency: z.nativeEnum(HabitFrequency).optional(),
-    rolloverTime: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/).optional()
+    rolloverTime: z.string(), // TODO: deprecated
+    startOffsetMinutes: z.number(),
+    endOffsetMinutes: z.number(),
 });
 
 export const createHabitEntryRequestSchema = z.object({

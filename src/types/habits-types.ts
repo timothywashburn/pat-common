@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { habitIdSchema, habitEntryIdSchema, userIdSchema } from './id-types';
-import { dateOnlyStringSchema } from './misc/misc-types';
+import { dateOnlyStringSchema } from './misc';
 import { Serialized } from '../utils';
 
 export enum HabitFrequency {
@@ -34,7 +34,6 @@ export const habitDataSchema = z.object({
     description: z.string().nullable().optional(),
     notes: z.string().nullable().optional(),
     frequency: z.nativeEnum(HabitFrequency),
-    rolloverTime: z.string(), // TODO: deprecated
     startOffsetMinutes: z.number(),
     endOffsetMinutes: z.number(),
     firstDay: dateOnlyStringSchema,
@@ -60,7 +59,6 @@ export const createHabitRequestSchema = z.object({
     description: z.string().trim().optional(),
     notes: z.string().trim().optional(),
     frequency: z.nativeEnum(HabitFrequency),
-    rolloverTime: z.string(), // TODO: deprecated
     startOffsetMinutes: z.number(),
     endOffsetMinutes: z.number(),
 });
@@ -70,7 +68,6 @@ export const updateHabitRequestSchema = z.object({
     description: z.string().trim().nullish(),
     notes: z.string().trim().nullish(),
     frequency: z.nativeEnum(HabitFrequency).optional(),
-    rolloverTime: z.string().optional(), // TODO: deprecated
     startOffsetMinutes: z.number().optional(),
     endOffsetMinutes: z.number().optional(),
 });

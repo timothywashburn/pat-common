@@ -70,9 +70,9 @@ export const updateHabitRequestSchema = z.object({
     description: z.string().trim().nullish(),
     notes: z.string().trim().nullish(),
     frequency: z.nativeEnum(HabitFrequency).optional(),
-    rolloverTime: z.string(), // TODO: deprecated
-    startOffsetMinutes: z.number(),
-    endOffsetMinutes: z.number(),
+    rolloverTime: z.string().optional(), // TODO: deprecated
+    startOffsetMinutes: z.number().optional(),
+    endOffsetMinutes: z.number().optional(),
 });
 
 export const createHabitEntryRequestSchema = z.object({

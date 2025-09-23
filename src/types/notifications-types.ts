@@ -90,14 +90,6 @@ export const notificationTemplateSchema = z.object({
     updatedAt: z.date()
 });
 
-export const notificationDesyncSchema = z.object({
-    _id: notificationDesyncIdSchema,
-    userId: userIdSchema,
-    targetId: z.string(),
-    createdAt: z.date(),
-    updatedAt: z.date()
-});
-
 export const createNotificationTemplateRequestSchema = z.object({
     targetLevel: z.nativeEnum(NotificationTemplateLevel),
     targetEntityType: z.nativeEnum(NotificationEntityType),
@@ -113,22 +105,30 @@ export const updateNotificationTemplateRequestSchema = z.object({
     active: z.boolean().optional()
 });
 
+export const notificationEntityDesyncSchema = z.object({
+    _id: notificationDesyncIdSchema,
+    userId: userIdSchema,
+    entityId: z.string(),
+    createdAt: z.date(),
+    updatedAt: z.date()
+});
+
 export const getEntitySyncRequestSchema = z.object({
-    targetEntityType: z.nativeEnum(NotificationEntityType),
-    targetId: z.string()
+    entityType: z.nativeEnum(NotificationEntityType),
+    entityId: z.string()
 });
 
 export const setEntitySyncRequestSchema = z.object({
-    targetEntityType: z.nativeEnum(NotificationEntityType),
-    targetId: z.string(),
+    entityType: z.nativeEnum(NotificationEntityType),
+    entityId: z.string(),
     synced: z.boolean()
 });
 
 export type NotificationTemplateData = z.infer<typeof notificationTemplateSchema>;
-export type NotificationDesyncData = z.infer<typeof notificationDesyncSchema>;
-
 export type CreateNotificationTemplateRequest = z.infer<typeof createNotificationTemplateRequestSchema>;
 export type UpdateNotificationTemplateRequest = z.infer<typeof updateNotificationTemplateRequestSchema>;
+
+export type NotificationDesyncData = z.infer<typeof notificationEntityDesyncSchema>;
 
 export type GetEntitySyncRequest = z.infer<typeof getEntitySyncRequestSchema>;
 export type SetEntitySyncRequest = z.infer<typeof setEntitySyncRequestSchema>;

@@ -57,7 +57,7 @@ export const notificationSchedulerDataSchema = z.discriminatedUnion('type', [
     z.object({
         type: z.literal(NotificationSchedulerType.DAY_TIME),
         days: z.array(z.number().min(0).max(6)),
-        time: z.string().regex(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/), // HH:mm format
+        offsetMinutes: z.number().int()
     }),
     z.object({
         type: z.literal(NotificationSchedulerType.RELATIVE_DATE),

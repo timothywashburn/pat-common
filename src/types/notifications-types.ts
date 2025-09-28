@@ -38,6 +38,7 @@ export enum NotificationVariantType {
     AGENDA_ITEM_DUE = 'agenda_item_due',
     HABIT_TIMED_REMINDER = 'habit_timed_reminder',
     HABIT_DUE = 'habit_due',
+    CLEAR_INBOX_TIMED_REMINDER = 'clear_inbox_timed_reminder',
 }
 
 export const ENTITY_TYPE_VARIANT_MAP: Record<NotificationEntityType, NotificationVariantType[]> = {
@@ -49,7 +50,9 @@ export const ENTITY_TYPE_VARIANT_MAP: Record<NotificationEntityType, Notificatio
         NotificationVariantType.HABIT_DUE,
     ],
     [NotificationEntityType.AGENDA_PANEL]: [],
-    [NotificationEntityType.INBOX_PANEL]: [],
+    [NotificationEntityType.INBOX_PANEL]: [
+        NotificationVariantType.CLEAR_INBOX_TIMED_REMINDER,
+    ],
     [NotificationEntityType.HABIT_PANEL]: [],
 } as const;
 
@@ -74,6 +77,9 @@ export const notificationVariantDataSchema = z.discriminatedUnion('type', [
     }),
     z.object({
         type: z.literal(NotificationVariantType.HABIT_DUE),
+    }),
+    z.object({
+        type: z.literal(NotificationVariantType.CLEAR_INBOX_TIMED_REMINDER),
     })
 ]);
 

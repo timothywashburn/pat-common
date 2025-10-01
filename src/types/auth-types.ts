@@ -7,8 +7,8 @@ export const authTokensSchema = z.object({
 });
 
 export const tokenPayloadSchema = z.object({
-    authId: z.string(),
-    userId: z.string()
+    authId: authIdSchema,
+    userId: userIdSchema
 });
 
 export const refreshTokenPayloadSchema = tokenPayloadSchema.extend({

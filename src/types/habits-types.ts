@@ -37,6 +37,7 @@ export const habitDataSchema = z.object({
     startOffsetMinutes: z.number(),
     endOffsetMinutes: z.number(),
     firstDay: dateOnlyStringSchema,
+    sortOrder: z.number(),
     createdAt: z.date(),
     updatedAt: z.date()
 });
@@ -61,6 +62,7 @@ export const createHabitRequestSchema = z.object({
     frequency: z.nativeEnum(HabitFrequency),
     startOffsetMinutes: z.number(),
     endOffsetMinutes: z.number(),
+    sortOrder: z.number().optional()
 });
 
 export const updateHabitRequestSchema = z.object({
@@ -70,6 +72,7 @@ export const updateHabitRequestSchema = z.object({
     frequency: z.nativeEnum(HabitFrequency).optional(),
     startOffsetMinutes: z.number().optional(),
     endOffsetMinutes: z.number().optional(),
+    sortOrder: z.number().optional()
 });
 
 export const createHabitEntryRequestSchema = z.object({

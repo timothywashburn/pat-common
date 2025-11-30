@@ -62,7 +62,6 @@ export const createHabitRequestSchema = z.object({
     frequency: z.nativeEnum(HabitFrequency),
     startOffsetMinutes: z.number(),
     endOffsetMinutes: z.number(),
-    sortOrder: z.number().optional()
 });
 
 export const updateHabitRequestSchema = z.object({

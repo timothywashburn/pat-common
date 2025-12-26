@@ -21,7 +21,6 @@ export const programConfigSchema = z.object({
     expo: z.object({
         token: z.string()
     }),
-    redisUrl: z.string(),
     updatedAt: z.date(),
     createdAt: z.date()
 });
